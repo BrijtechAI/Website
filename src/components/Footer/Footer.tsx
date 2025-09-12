@@ -1,41 +1,48 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Code2, Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram } from 'lucide-react';
+import { Code2, Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram, ArrowRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const footerLinks = {
     company: [
-      { name: 'About Us', href: '#about' },
-      { name: 'Our Team', href: '#team' },
-      { name: 'Careers', href: '#careers' },
-      { name: 'Press Kit', href: '#press' }
+      { name: 'About Us', href: '/about' },
+      { name: 'Our Team', href: '/about#team' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Blog', href: '/blog' }
     ],
     services: [
-      { name: 'Custom Development', href: '#services' },
-      { name: 'AI Solutions', href: '#services' },
-      { name: 'Cloud Services', href: '#services' },
-      { name: 'Consulting', href: '#services' }
+      { name: 'Custom Development', href: '/services#custom-development' },
+      { name: 'Web & Mobile Apps', href: '/services#web-mobile' },
+      { name: 'Cloud & DevOps', href: '/services#cloud-devops' },
+      { name: 'AI/ML Solutions', href: '/services#ai-ml' }
     ],
     resources: [
-      { name: 'Blog', href: '#blog' },
-      { name: 'Case Studies', href: '#portfolio' },
-      { name: 'Documentation', href: '#docs' },
-      { name: 'Support', href: '#support' }
+      { name: 'Portfolio', href: '/portfolio' },
+      { name: 'Case Studies', href: '/portfolio#case-studies' },
+      { name: 'Blog', href: '/blog' },
+      { name: 'Contact', href: '/contact' }
     ],
     legal: [
-      { name: 'Privacy Policy', href: '#privacy' },
-      { name: 'Terms of Service', href: '#terms' },
-      { name: 'Cookie Policy', href: '#cookies' },
-      { name: 'Security', href: '#security' }
+      { name: 'Privacy Policy', href: '/privacy' },
+      { name: 'Terms of Service', href: '/terms' },
+      { name: 'Cookie Policy', href: '/cookies' },
+      { name: 'Security', href: '/security' }
     ]
   };
 
   const socialLinks = [
-    { icon: Twitter, href: '#', name: 'Twitter' },
-    { icon: Linkedin, href: '#', name: 'LinkedIn' },
-    { icon: Github, href: '#', name: 'GitHub' },
-    { icon: Instagram, href: '#', name: 'Instagram' }
+    { icon: Twitter, href: 'https://twitter.com/brijtech', name: 'Twitter' },
+    { icon: Linkedin, href: 'https://linkedin.com/company/brijtech', name: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/brijtech', name: 'GitHub' },
+    { icon: Instagram, href: 'https://instagram.com/brijtech', name: 'Instagram' }
   ];
+
+  const handleNewsletterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle newsletter subscription
+    console.log('Newsletter subscription');
+  };
 
   return (
     <footer className="bg-background border-t border-border">
@@ -44,32 +51,38 @@ const Footer: React.FC = () => {
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <motion.div
-              className="flex items-center space-x-2 mb-6"
-              whileHover={{ scale: 1.05 }}
-            >
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
-                <Code2 className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-orbitron font-bold gradient-text">
-                Brijtech
-              </span>
-            </motion.div>
+            <Link to="/">
+              <motion.div
+                className="flex items-center space-x-2 mb-6"
+                whileHover={{ scale: 1.05 }}
+              >
+                <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                  <Code2 className="w-6 h-6 text-white" />
+                </div>
+                <span className="text-2xl font-orbitron font-bold gradient-text">
+                  Brijtech
+                </span>
+              </motion.div>
+            </Link>
             
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Tomorrow's Software, Today. We engineer cutting-edge solutions 
-              that transform businesses and accelerate digital innovation.
+              Engineering the Future of Software. We transform ambitious ideas into 
+              scalable, intelligent solutions that drive innovation and business growth.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                <span>brijtech2025@gmail.com</span>
+                <a href="mailto:brijtech2025@gmail.com" className="hover:text-primary transition-colors">
+                  brijtech2025@gmail.com
+                </a>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>+1 (555) 123-4567</span>
+                <a href="tel:+15551234567" className="hover:text-primary transition-colors">
+                  +1 (555) 123-4567
+                </a>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="w-4 h-4 text-primary" />
@@ -84,13 +97,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <motion.a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
-                    whileHover={{ x: 3 }}
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
                   >
-                    {link.name}
-                  </motion.a>
+                    <span>{link.name}</span>
+                    <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -101,13 +114,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
-                  <motion.a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
-                    whileHover={{ x: 3 }}
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
                   >
-                    {link.name}
-                  </motion.a>
+                    <span>{link.name}</span>
+                    <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -118,13 +131,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
-                  <motion.a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
-                    whileHover={{ x: 3 }}
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
                   >
-                    {link.name}
-                  </motion.a>
+                    <span>{link.name}</span>
+                    <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -135,13 +148,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <motion.a
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm"
-                    whileHover={{ x: 3 }}
+                  <Link
+                    to={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
                   >
-                    {link.name}
-                  </motion.a>
+                    <span>{link.name}</span>
+                    <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -153,33 +166,35 @@ const Footer: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h4 className="font-orbitron font-semibold text-xl mb-2">
-                Stay Updated
+                Stay Updated with Tech Insights
               </h4>
               <p className="text-muted-foreground">
-                Get the latest insights on technology trends and innovation.
+                Get the latest trends, insights, and updates on cutting-edge technology.
               </p>
             </div>
-            <div className="flex space-x-3">
+            <form onSubmit={handleNewsletterSubmit} className="flex space-x-3">
               <input
                 type="email"
                 placeholder="Enter your email"
+                required
                 className="flex-1 px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
               />
               <motion.button
+                type="submit"
                 className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-2xl font-medium hover:shadow-lg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 Subscribe
               </motion.button>
-            </div>
+            </form>
           </div>
         </div>
 
         {/* Bottom Footer */}
         <div className="py-8 border-t border-border flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm mb-4 md:mb-0">
-            © 2025 Brijtech. All rights reserved.
+            © 2025 Brijtech. All rights reserved. Engineering the Future of Software.
           </p>
           
           {/* Social Links */}
@@ -190,6 +205,8 @@ const Footer: React.FC = () => {
                 <motion.a
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 glass rounded-full flex items-center justify-center hover:glow transition-all duration-300"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}

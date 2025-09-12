@@ -1,34 +1,45 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header/Header';
-import Hero from './components/Hero/Hero';
-import About from './components/About/About';
-import Services from './components/Services/Services';
-import Portfolio from './components/Portfolio/Portfolio';
-import WhyChooseUs from './components/WhyChooseUs/WhyChooseUs';
-import Technologies from './components/Technologies/Technologies';
-import Testimonials from './components/Testimonials/Testimonials';
-import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Portfolio from './pages/Portfolio';
+import Blog from './pages/Blog';
+import Careers from './pages/Careers';
+import Contact from './pages/Contact';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookiePolicy from './pages/CookiePolicy';
+import Security from './pages/Security';
 import './styles/globals.css';
 
 function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Services />
-          <Portfolio />
-          <WhyChooseUs />
-          <Technologies />
-          <Testimonials />
-          <Contact />
-        </main>
-        <Footer />
-      </div>
+      <Router>
+        <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+          <Header />
+          <main className="pt-20">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/portfolio" element={<Portfolio />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/careers" element={<Careers />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/cookies" element={<CookiePolicy />} />
+              <Route path="/security" element={<Security />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </ThemeProvider>
   );
 }
