@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 const Portfolio: React.FC = () => {
   const [activeTab, setActiveTab] = useState('all');
+  const { ref: portfolioRef, isVisible: portfolioVisible } = useScrollAnimation();
 
   const categories = [
     { id: 'all', name: 'All Projects' },
@@ -25,7 +27,7 @@ const Portfolio: React.FC = () => {
       result: '300% increase in user engagement and 40% faster decision making',
       image: 'https://images.pexels.com/photos/6802049/pexels-photo-6802049.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React', 'Python', 'TensorFlow', 'AWS'],
-      gradient: 'from-primary to-secondary'
+      gradient: 'brand-gradient-primary'
     },
     {
       id: 2,
@@ -38,7 +40,7 @@ const Portfolio: React.FC = () => {
       result: '50% reduction in response time and improved patient outcomes',
       image: 'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Node.js', 'MongoDB', 'AWS IoT', 'React'],
-      gradient: 'from-secondary to-accent'
+      gradient: 'brand-gradient-secondary'
     },
     {
       id: 3,
@@ -51,7 +53,7 @@ const Portfolio: React.FC = () => {
       result: '200% increase in mobile conversions and enhanced user experience',
       image: 'https://images.pexels.com/photos/4968664/pexels-photo-4968664.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React Native', 'ARKit', 'Stripe', 'Firebase'],
-      gradient: 'from-accent to-primary'
+      gradient: 'brand-gradient-primary'
     },
     {
       id: 4,
@@ -64,7 +66,7 @@ const Portfolio: React.FC = () => {
       result: '35% improvement in city operations efficiency',
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Vue.js', 'Node.js', 'PostgreSQL', 'Docker'],
-      gradient: 'from-primary to-accent'
+      gradient: 'brand-gradient-secondary'
     },
     {
       id: 5,
@@ -77,7 +79,7 @@ const Portfolio: React.FC = () => {
       result: '400% increase in content production speed',
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Python', 'OpenAI API', 'React', 'PostgreSQL'],
-      gradient: 'from-secondary to-primary'
+      gradient: 'brand-gradient-primary'
     },
     {
       id: 6,
@@ -90,7 +92,7 @@ const Portfolio: React.FC = () => {
       result: '25% reduction in delivery costs and improved customer satisfaction',
       image: 'https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Angular', 'Spring Boot', 'MySQL', 'Google Maps API'],
-      gradient: 'from-accent to-secondary'
+      gradient: 'brand-gradient-secondary'
     }
   ];
 

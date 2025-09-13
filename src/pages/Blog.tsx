@@ -116,7 +116,7 @@ const Blog: React.FC = () => {
                 key={category}
                 className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? 'bg-gradient-to-r from-primary to-secondary text-white'
+                    ? 'brand-gradient-primary text-white'
                     : 'glass hover:glow'
                 }`}
                 onClick={() => setSelectedCategory(category)}
@@ -154,7 +154,7 @@ const Blog: React.FC = () => {
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-gradient-to-r from-primary to-secondary text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="brand-gradient-primary text-white px-3 py-1 rounded-full text-sm font-medium">
                         {post.category}
                       </span>
                     </div>
@@ -240,7 +240,7 @@ const Blog: React.FC = () => {
               />
               <motion.button
                 type="submit"
-                className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
+                className="brand-gradient-primary text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

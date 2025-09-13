@@ -240,7 +240,7 @@ const Contact: React.FC = () => {
                   
                   <motion.button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 hover:shadow-2xl transition-all duration-300"
+                    className="w-full brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 hover:shadow-2xl transition-all duration-300"
                     whileHover={{ 
                       scale: 1.02,
                       boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)"
@@ -273,7 +273,7 @@ const Contact: React.FC = () => {
                       whileHover={{ x: 5 }}
                     >
                       <div className="flex items-start space-x-4">
-                        <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <div className="w-12 h-12 brand-gradient-primary rounded-2xl flex items-center justify-center flex-shrink-0">
                           <Icon className="w-6 h-6 text-white" />
                         </div>
                         <div>
@@ -341,7 +341,7 @@ const Contact: React.FC = () => {
                 <h4 className="font-orbitron font-semibold text-xl mb-4">
                   Our Location
                 </h4>
-                <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center">
+                <div className="w-full h-48 bg-primary/10 rounded-2xl flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
                     <p className="text-sm text-muted-foreground">

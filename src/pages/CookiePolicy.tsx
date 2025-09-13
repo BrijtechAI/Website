@@ -118,7 +118,7 @@ const CookiePolicy: React.FC = () => {
                     className="glass p-6 rounded-3xl"
                   >
                     <div className="flex items-center mb-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mr-4">
+                      <div className="w-12 h-12 brand-gradient-primary rounded-2xl flex items-center justify-center mr-4">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
@@ -136,7 +136,7 @@ const CookiePolicy: React.FC = () => {
                       <ul className="text-sm text-muted-foreground space-y-1">
                         {type.examples.map((example, exampleIndex) => (
                           <li key={exampleIndex} className="flex items-center">
-                            <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mr-2" />
+                            <div className="w-2 h-2 bg-primary rounded-full mr-2" />
                             {example}
                           </li>
                         ))}

@@ -96,7 +96,7 @@ const About: React.FC = () => {
                     className="glass p-8 rounded-3xl h-full hover:glow transition-all duration-300"
                     whileHover={{ y: -5 }}
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 brand-gradient-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-orbitron font-semibold mb-4">
@@ -128,7 +128,7 @@ const About: React.FC = () => {
                     transition={{ type: "spring", stiffness: 300, damping: 10 }}
                     className="space-y-4"
                   >
-                    <div className={`w-16 h-16 bg-gradient-to-br from-${achievement.color} to-${achievement.color}/80 rounded-2xl flex items-center justify-center mx-auto`}>
+                    <div className="w-16 h-16 brand-gradient-primary rounded-2xl flex items-center justify-center mx-auto">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <div className="text-3xl md:text-4xl font-orbitron font-bold gradient-text">
@@ -182,7 +182,7 @@ const About: React.FC = () => {
                       alt={member.name}
                       className="w-24 h-24 rounded-full object-cover mx-auto ring-4 ring-primary/20 group-hover:ring-primary/40 transition-all duration-300"
                     />
-                    <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                    <div className="absolute -bottom-2 -right-2 w-8 h-8 brand-gradient-primary rounded-full flex items-center justify-center">
                       <Lightbulb className="w-4 h-4 text-white" />
                     </div>
                   </div>

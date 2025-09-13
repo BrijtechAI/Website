@@ -25,7 +25,7 @@ const Portfolio: React.FC = () => {
       result: '300% increase in user engagement, 40% faster decision making, and $2M+ in cost savings for the client.',
       image: 'https://images.pexels.com/photos/6802049/pexels-photo-6802049.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React', 'Python', 'TensorFlow', 'AWS', 'PostgreSQL'],
-      gradient: 'from-primary to-secondary',
+      gradient: 'brand-gradient-primary',
       duration: '12 months',
       teamSize: '8 developers',
       clientSatisfaction: '98%'
@@ -41,7 +41,7 @@ const Portfolio: React.FC = () => {
       result: '50% reduction in response time, improved patient outcomes, and seamless integration with existing systems.',
       image: 'https://images.pexels.com/photos/4386431/pexels-photo-4386431.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Node.js', 'MongoDB', 'AWS IoT', 'React', 'Docker'],
-      gradient: 'from-secondary to-accent',
+      gradient: 'brand-gradient-secondary',
       duration: '10 months',
       teamSize: '6 developers',
       clientSatisfaction: '96%'
@@ -57,7 +57,7 @@ const Portfolio: React.FC = () => {
       result: '200% increase in mobile conversions, enhanced user experience, and 4.8-star app store rating.',
       image: 'https://images.pexels.com/photos/4968664/pexels-photo-4968664.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['React Native', 'ARKit', 'Stripe', 'Firebase', 'Redux'],
-      gradient: 'from-accent to-primary',
+      gradient: 'brand-gradient-primary',
       duration: '8 months',
       teamSize: '5 developers',
       clientSatisfaction: '99%'
@@ -73,7 +73,7 @@ const Portfolio: React.FC = () => {
       result: '35% improvement in city operations efficiency, reduced energy consumption, and enhanced citizen satisfaction.',
       image: 'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Vue.js', 'Node.js', 'PostgreSQL', 'Docker', 'Kubernetes'],
-      gradient: 'from-primary to-accent',
+      gradient: 'brand-gradient-secondary',
       duration: '14 months',
       teamSize: '12 developers',
       clientSatisfaction: '97%'
@@ -89,7 +89,7 @@ const Portfolio: React.FC = () => {
       result: '400% increase in content production speed, improved content quality, and significant cost reduction.',
       image: 'https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Python', 'OpenAI API', 'React', 'PostgreSQL', 'Redis'],
-      gradient: 'from-secondary to-primary',
+      gradient: 'brand-gradient-primary',
       duration: '6 months',
       teamSize: '4 developers',
       clientSatisfaction: '95%'
@@ -105,7 +105,7 @@ const Portfolio: React.FC = () => {
       result: '25% reduction in delivery costs, improved customer satisfaction, and streamlined operations.',
       image: 'https://images.pexels.com/photos/4482900/pexels-photo-4482900.jpeg?auto=compress&cs=tinysrgb&w=800',
       technologies: ['Angular', 'Spring Boot', 'MySQL', 'Google Maps API', 'Apache Kafka'],
-      gradient: 'from-accent to-secondary',
+      gradient: 'brand-gradient-primary',
       duration: '9 months',
       teamSize: '7 developers',
       clientSatisfaction: '94%'
@@ -171,7 +171,7 @@ const Portfolio: React.FC = () => {
                 key={category.id}
                 className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
                   activeTab === category.id
-                    ? 'bg-gradient-to-r from-primary to-secondary text-white'
+                    ? 'brand-gradient-primary text-white'
                     : 'glass hover:glow'
                 }`}
                 onClick={() => setActiveTab(category.id)}
@@ -204,7 +204,7 @@ const Portfolio: React.FC = () => {
                       alt={project.title}
                       className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-80 transition-opacity duration-300`} />
+                    <div className={`absolute inset-0 ${project.gradient} opacity-0 group-hover:opacity-80 transition-opacity duration-300`} />
                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <div className="flex space-x-4">
                         <motion.button
@@ -275,7 +275,7 @@ const Portfolio: React.FC = () => {
                       {project.technologies.map((tech, techIndex) => (
                         <span
                           key={techIndex}
-                          className="text-xs bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground px-3 py-1 rounded-full border border-primary/20"
+                          className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20"
                         >
                           {tech}
                         </span>
@@ -283,7 +283,7 @@ const Portfolio: React.FC = () => {
                     </div>
                     
                     <motion.button
-                      className="group/btn w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-2xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
+                      className="group/btn w-full brand-gradient-primary text-white px-6 py-3 rounded-2xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -316,7 +316,7 @@ const Portfolio: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
-                className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
+                className="brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

@@ -56,11 +56,11 @@ const Footer: React.FC = () => {
                 className="flex items-center space-x-2 mb-6"
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 brand-gradient-primary rounded-xl flex items-center justify-center">
                   <Code2 className="w-6 h-6 text-white" />
                 </div>
-                <span className="text-2xl font-orbitron font-bold gradient-text">
-                  Brijtech
+                <span className="text-2xl font-orbitron font-bold brand-text-gradient">
+                  BrijTech
                 </span>
               </motion.div>
             </Link>
@@ -181,7 +181,7 @@ const Footer: React.FC = () => {
               />
               <motion.button
                 type="submit"
-                className="bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-2xl font-medium hover:shadow-lg transition-all duration-300"
+                className="brand-gradient-primary text-white px-6 py-3 rounded-2xl font-medium hover:shadow-lg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

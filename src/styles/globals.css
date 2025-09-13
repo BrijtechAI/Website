@@ -3,37 +3,41 @@
 @tailwind utilities;
 
 :root {
-  /* Light theme colors */
+  /* Light theme colors - BrijTech Brand */
   --background: 248 250 252;
-  --foreground: 10 10 10;
+  --foreground: 26 26 26; /* Charcoal black #1A1A1A */
   --card: 255 255 255;
-  --card-foreground: 10 10 10;
-  --primary: 59 130 246;
+  --card-foreground: 26 26 26;
+  --primary: 127 63 191; /* Purple #7F3FBF */
   --primary-foreground: 255 255 255;
-  --secondary: 100 116 139;
+  --secondary: 31 139 207; /* Blue #1F8BCF */
   --secondary-foreground: 255 255 255;
-  --accent: 16 185 129;
-  --accent-foreground: 10 10 10;
+  --accent: 77 208 225; /* Teal #4DD0E1 */
+  --accent-foreground: 26 26 26;
   --muted: 245 245 245;
   --muted-foreground: 115 115 115;
   --border: 229 229 229;
   --success: 34 197 94;
   --warning: 251 146 60;
   --error: 239 68 68;
+  
+  /* Brand gradient colors */
+  --gradient-primary: linear-gradient(135deg, #7F3FBF 0%, #EE3F8F 100%);
+  --gradient-secondary: linear-gradient(135deg, #1F8BCF 0%, #4DD0E1 100%);
 }
 
 [data-theme="dark"] {
-  /* Dark theme colors */
+  /* Dark theme colors - BrijTech Brand */
   --background: 10 10 10;
   --foreground: 255 255 255;
   --card: 20 20 20;
   --card-foreground: 255 255 255;
-  --primary: 59 130 246;
-  --primary-foreground: 10 10 10;
-  --secondary: 148 163 184;
+  --primary: 127 63 191; /* Purple #7F3FBF */
+  --primary-foreground: 255 255 255;
+  --secondary: 31 139 207; /* Blue #1F8BCF */
   --secondary-foreground: 255 255 255;
-  --accent: 16 185 129;
-  --accent-foreground: 10 10 10;
+  --accent: 77 208 225; /* Teal #4DD0E1 */
+  --accent-foreground: 26 26 26;
   --muted: 30 30 30;
   --muted-foreground: 160 160 160;
   --border: 40 40 40;
@@ -66,7 +70,25 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .brand-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .brand-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .brand-text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
   .card-shadow {
@@ -79,5 +101,21 @@
   
   .btn-secondary {
     @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors duration-300;
+  }
+  
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-border/50;
+  }
+  
+  .glass-strong {
+    @apply bg-background/90 backdrop-blur-lg border border-border/60;
+  }
+  
+  .glass-mobile {
+    @apply bg-background/85 backdrop-blur-sm border border-border/40;
+  }
+  
+  .glow {
+    @apply shadow-lg shadow-primary/20;
   }
 }

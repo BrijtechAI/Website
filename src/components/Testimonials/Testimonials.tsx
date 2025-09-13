@@ -114,7 +114,7 @@ const Testimonials: React.FC = () => {
                         alt={testimonials[currentIndex].name}
                         className="w-24 h-24 rounded-full object-cover mx-auto lg:mx-0 ring-4 ring-primary/20"
                       />
-                      <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center">
+                      <div className="absolute -bottom-2 -right-2 w-8 h-8 brand-gradient-primary rounded-full flex items-center justify-center">
                         <Star className="w-4 h-4 text-white fill-current" />
                       </div>
                     </div>

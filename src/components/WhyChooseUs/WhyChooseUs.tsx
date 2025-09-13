@@ -51,18 +51,18 @@ const WhyChooseUs: React.FC = () => {
   const getColorClasses = (color: string) => {
     switch (color) {
       case 'primary':
-        return 'from-primary to-primary/80';
+        return 'brand-gradient-primary';
       case 'secondary':
-        return 'from-secondary to-secondary/80';
+        return 'brand-gradient-secondary';
       case 'accent':
-        return 'from-accent to-accent/80';
+        return 'brand-gradient-secondary';
       default:
-        return 'from-primary to-secondary';
+        return 'brand-gradient-primary';
     }
   };
 
   return (
-    <section id="why-choose-us" className="py-24 bg-gray-50 dark:bg-gray-800">
+    <section id="why-choose-us" className="py-24 bg-gradient-to-br from-background via-muted/20 to-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -72,7 +72,7 @@ const WhyChooseUs: React.FC = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Why Choose <span className="gradient-text">Brijtech</span>
+            Why Choose <span className="brand-text-gradient">BrijTech</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We combine cutting-edge technology with proven expertise to deliver 

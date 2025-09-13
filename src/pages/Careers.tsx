@@ -194,7 +194,7 @@ const Careers: React.FC = () => {
                     className="glass p-6 rounded-3xl text-center hover:glow transition-all duration-300"
                     whileHover={{ y: -5 }}
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 brand-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     <h3 className="text-xl font-orbitron font-semibold mb-3">
@@ -269,7 +269,7 @@ const Careers: React.FC = () => {
                       <h3 className="text-xl font-orbitron font-semibold mb-2">
                         {job.title}
                       </h3>
-                      <span className="text-sm bg-gradient-to-r from-primary/20 to-secondary/20 text-primary px-3 py-1 rounded-full">
+                      <span className="text-sm bg-primary/10 text-primary px-3 py-1 rounded-full">
                         {job.department}
                       </span>
                     </div>
@@ -303,7 +303,7 @@ const Careers: React.FC = () => {
                     <ul className="space-y-2">
                       {job.requirements.map((req, reqIndex) => (
                         <li key={reqIndex} className="flex items-start text-sm text-muted-foreground">
-                          <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mr-3 mt-2 flex-shrink-0" />
+                          <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0" />
                           {req}
                         </li>
                       ))}
@@ -315,7 +315,7 @@ const Careers: React.FC = () => {
                     <ul className="space-y-2">
                       {job.benefits.map((benefit, benefitIndex) => (
                         <li key={benefitIndex} className="flex items-start text-sm text-muted-foreground">
-                          <div className="w-2 h-2 bg-gradient-to-r from-secondary to-accent rounded-full mr-3 mt-2 flex-shrink-0" />
+                          <div className="w-2 h-2 bg-accent rounded-full mr-3 mt-2 flex-shrink-0" />
                           {benefit}
                         </li>
                       ))}
@@ -323,7 +323,7 @@ const Careers: React.FC = () => {
                   </div>
 
                   <motion.button
-                    className="w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
+                    className="w-full brand-gradient-primary text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -355,7 +355,7 @@ const Careers: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
-                className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
+                className="brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

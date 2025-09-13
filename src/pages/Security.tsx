@@ -172,7 +172,7 @@ const Security: React.FC = () => {
                     className="glass p-8 rounded-3xl h-full hover:glow transition-all duration-300"
                     whileHover={{ y: -5 }}
                   >
-                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 brand-gradient-primary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     
@@ -228,7 +228,7 @@ const Security: React.FC = () => {
                 viewport={{ once: true }}
                 className="glass p-6 rounded-3xl text-center hover:glow transition-all duration-300"
               >
-                <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <div className="w-16 h-16 brand-gradient-primary rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <Shield className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-lg font-orbitron font-semibold mb-2">
@@ -277,7 +277,7 @@ const Security: React.FC = () => {
                 <ul className="space-y-3">
                   {practice.practices.map((item, itemIndex) => (
                     <li key={itemIndex} className="flex items-start text-sm text-muted-foreground">
-                      <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mr-3 mt-2 flex-shrink-0" />
+                      <div className="w-2 h-2 bg-primary rounded-full mr-3 mt-2 flex-shrink-0" />
                       {item}
                     </li>
                   ))}
@@ -312,7 +312,7 @@ const Security: React.FC = () => {
               <p><strong>Response Time:</strong> Within 24 hours</p>
             </div>
             <motion.button
-              className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
+              className="brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

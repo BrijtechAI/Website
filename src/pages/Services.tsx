@@ -11,7 +11,7 @@ const Services: React.FC = () => {
       description: 'Scalable enterprise solutions built with cutting-edge technologies and best practices for maximum performance and reliability.',
       features: ['Full-stack Development', 'Microservices Architecture', 'API Integration', 'Performance Optimization'],
       technologies: ['React', 'Node.js', 'Python', 'PostgreSQL'],
-      gradient: 'from-primary to-secondary',
+      gradient: 'brand-gradient-primary',
       price: 'Starting from $15,000',
       timeline: '8-16 weeks'
     },
@@ -22,7 +22,7 @@ const Services: React.FC = () => {
       description: 'Cross-platform applications using React, Next.js, React Native, and Flutter for seamless user experiences across all devices.',
       features: ['Responsive Design', 'Cross-platform Apps', 'PWA Development', 'App Store Publishing'],
       technologies: ['React Native', 'Flutter', 'Next.js', 'TypeScript'],
-      gradient: 'from-secondary to-accent',
+      gradient: 'brand-gradient-secondary',
       price: 'Starting from $12,000',
       timeline: '6-12 weeks'
     },
@@ -33,7 +33,7 @@ const Services: React.FC = () => {
       description: 'AWS, Azure, and GCP implementations with Kubernetes, CI/CD pipelines, and infrastructure automation for scalable deployments.',
       features: ['Cloud Migration', 'Container Orchestration', 'Infrastructure as Code', 'Automated Deployment'],
       technologies: ['AWS', 'Docker', 'Kubernetes', 'Terraform'],
-      gradient: 'from-accent to-primary',
+      gradient: 'brand-gradient-primary',
       price: 'Starting from $10,000',
       timeline: '4-8 weeks'
     },
@@ -44,7 +44,7 @@ const Services: React.FC = () => {
       description: 'Intelligent solutions including predictive analytics, chatbots, and automated workflows powered by machine learning algorithms.',
       features: ['Predictive Analytics', 'Natural Language Processing', 'Computer Vision', 'Process Automation'],
       technologies: ['TensorFlow', 'PyTorch', 'OpenAI', 'Python'],
-      gradient: 'from-primary to-accent',
+      gradient: 'brand-gradient-secondary',
       price: 'Starting from $20,000',
       timeline: '10-20 weeks'
     },
@@ -55,7 +55,7 @@ const Services: React.FC = () => {
       description: 'Futuristic design thinking and product strategy focused on user-centric experiences that drive engagement and conversion.',
       features: ['User Research', 'Design Systems', 'Prototyping', 'Usability Testing'],
       technologies: ['Figma', 'Adobe XD', 'Framer', 'Principle'],
-      gradient: 'from-secondary to-primary',
+      gradient: 'brand-gradient-primary',
       price: 'Starting from $8,000',
       timeline: '4-8 weeks'
     }
@@ -126,7 +126,7 @@ const Services: React.FC = () => {
                     className="glass p-8 rounded-3xl h-full hover:glow transition-all duration-300"
                     whileHover={{ y: -5 }}
                   >
-                    <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                    <div className={`w-16 h-16 ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className="w-8 h-8 text-white" />
                     </div>
                     
@@ -158,7 +158,7 @@ const Services: React.FC = () => {
                         {service.technologies.map((tech, techIndex) => (
                           <span
                             key={techIndex}
-                            className="text-xs bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground px-3 py-1 rounded-full border border-primary/20"
+                            className="text-xs bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20"
                           >
                             {tech}
                           </span>
@@ -179,7 +179,7 @@ const Services: React.FC = () => {
                     </div>
                     
                     <motion.button
-                      className="group/btn w-full bg-gradient-to-r from-primary to-secondary text-white px-6 py-3 rounded-2xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
+                      className="group/btn w-full brand-gradient-primary text-white px-6 py-3 rounded-2xl font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all duration-300"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -223,13 +223,13 @@ const Services: React.FC = () => {
                 className="text-center"
               >
                 <div className="relative mb-6">
-                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-20 h-20 brand-gradient-primary rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-2xl font-orbitron font-bold text-white">
                       {step.step}
                     </span>
                   </div>
                   {index < processSteps.length - 1 && (
-                    <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-primary to-secondary transform -translate-y-1/2" />
+                    <div className="hidden lg:block absolute top-10 left-full w-full h-0.5 brand-gradient-primary transform -translate-y-1/2" />
                   )}
                 </div>
                 <h3 className="text-xl font-orbitron font-semibold mb-4">
@@ -262,7 +262,7 @@ const Services: React.FC = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <motion.button
-                className="bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
+                className="brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >

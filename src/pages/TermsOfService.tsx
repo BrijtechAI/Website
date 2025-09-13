@@ -98,7 +98,7 @@ const TermsOfService: React.FC = () => {
                   className="glass p-8 rounded-3xl"
                 >
                   <div className="flex items-center mb-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mr-4">
+                    <div className="w-12 h-12 brand-gradient-primary rounded-2xl flex items-center justify-center mr-4">
                       <Icon className="w-6 h-6 text-white" />
                     </div>
                     <h2 className="text-2xl font-orbitron font-semibold">
