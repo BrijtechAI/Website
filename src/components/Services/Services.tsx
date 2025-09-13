@@ -42,7 +42,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section id="services" className="py-24">
+    <section id="services" className="py-24 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -51,10 +51,10 @@ const Services: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             Our <span className="gradient-text">Services</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Comprehensive software solutions designed to accelerate your digital transformation 
             and drive sustainable business growth
           </p>
@@ -73,35 +73,35 @@ const Services: React.FC = () => {
                 className="group"
               >
                 <motion.div
-                  className="glass p-8 rounded-3xl h-full hover:glow transition-all duration-300"
+                  className="card-shadow p-8 rounded-2xl h-full transition-all duration-300"
                   whileHover={{ y: -5 }}
                 >
-                  <div className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                  <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-xl font-orbitron font-semibold mb-4">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
                     {service.title}
                   </h3>
                   
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {service.description}
                   </p>
                   
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
-                        <div className="w-2 h-2 bg-gradient-to-r from-primary to-secondary rounded-full mr-3" />
+                      <li key={featureIndex} className="flex items-center text-sm text-gray-600 dark:text-gray-300">
+                        <div className="w-2 h-2 bg-primary rounded-full mr-3" />
                         {feature}
                       </li>
                     ))}
                   </ul>
                   
                   <motion.button
-                    className="group/btn flex items-center text-primary hover:text-secondary transition-colors duration-300"
+                    className="group/btn flex items-center text-primary hover:text-primary/80 transition-colors duration-300 font-medium"
                     whileHover={{ x: 5 }}
                   >
-                    <span className="font-medium">Learn More</span>
+                    <span>Learn More</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </motion.button>
                 </motion.div>

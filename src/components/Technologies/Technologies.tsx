@@ -66,7 +66,7 @@ const Technologies: React.FC = () => {
   ];
 
   return (
-    <section id="technologies" className="py-24 bg-muted/20">
+    <section id="technologies" className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -75,10 +75,10 @@ const Technologies: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             Technologies & <span className="gradient-text">Tools</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We leverage the latest technologies and industry-leading tools to build 
             robust, scalable, and future-ready solutions
           </p>
@@ -95,10 +95,10 @@ const Technologies: React.FC = () => {
               className="group"
             >
               <motion.div
-                className="glass p-8 rounded-3xl hover:glow transition-all duration-300"
+                className="card-shadow p-8 rounded-2xl transition-all duration-300"
                 whileHover={{ y: -5 }}
               >
-                <h3 className="text-xl font-orbitron font-semibold mb-6 text-center gradient-text">
+                <h3 className="text-xl font-semibold mb-6 text-center text-primary">
                   {stack.category}
                 </h3>
                 
@@ -106,7 +106,7 @@ const Technologies: React.FC = () => {
                   {stack.technologies.map((tech, techIndex) => (
                     <motion.div
                       key={techIndex}
-                      className="flex flex-col items-center space-y-2 p-3 rounded-2xl hover:bg-muted/20 transition-colors duration-300"
+                      className="flex flex-col items-center space-y-2 p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors duration-300"
                       whileHover={{ scale: 1.05 }}
                       title={tech.name}
                     >
@@ -120,12 +120,12 @@ const Technologies: React.FC = () => {
                             target.style.display = 'none';
                             const parent = target.parentElement;
                             if (parent) {
-                              parent.innerHTML = `<div class="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-lg flex items-center justify-center text-white text-xs font-bold">${tech.name.charAt(0)}</div>`;
+                              parent.innerHTML = `<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white text-xs font-bold">${tech.name.charAt(0)}</div>`;
                             }
                           }}
                         />
                       </div>
-                      <span className="text-xs text-center text-muted-foreground font-medium">
+                      <span className="text-xs text-center text-gray-600 dark:text-gray-400 font-medium">
                         {tech.name}
                       </span>
                     </motion.div>
@@ -144,11 +144,11 @@ const Technologies: React.FC = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <div className="glass p-8 rounded-3xl max-w-4xl mx-auto">
-            <h3 className="text-2xl font-orbitron font-semibold mb-6">
+          <div className="card-shadow p-8 rounded-2xl max-w-4xl mx-auto">
+            <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-white">
               Cutting-Edge Tech Stack
             </h3>
-            <p className="text-muted-foreground mb-8">
+            <p className="text-gray-600 dark:text-gray-300 mb-8">
               We continuously evaluate and adopt emerging technologies to ensure our solutions 
               remain at the forefront of innovation
             </p>
@@ -157,7 +157,7 @@ const Technologies: React.FC = () => {
               {['Microservices', 'Serverless', 'Edge Computing', 'WebAssembly', 'GraphQL', 'JAMstack'].map((tech, index) => (
                 <motion.span
                   key={index}
-                  className="px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground rounded-full text-sm font-medium border border-primary/20"
+                  className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium"
                   whileHover={{ scale: 1.05 }}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}

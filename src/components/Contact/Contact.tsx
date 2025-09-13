@@ -46,7 +46,7 @@ const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-24 bg-muted/20">
+    <section id="contact" className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -55,10 +55,10 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             Let's Build the <span className="gradient-text">Future</span> Together
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Ready to transform your business with cutting-edge technology? 
             Let's discuss your project and create something extraordinary
           </p>
@@ -72,8 +72,8 @@ const Contact: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="glass p-8 rounded-3xl">
-              <h3 className="text-2xl font-orbitron font-semibold mb-8">
+            <div className="card-shadow p-8 rounded-2xl">
+              <h3 className="text-2xl font-semibold mb-8 text-gray-900 dark:text-white">
                 Start Your Project
               </h3>
               
@@ -89,7 +89,7 @@ const Contact: React.FC = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
                       placeholder="John Doe"
                     />
                   </div>
@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -120,7 +120,7 @@ const Contact: React.FC = () => {
                       name="company"
                       value={formData.company}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
                       placeholder="Your Company"
                     />
                   </div>
@@ -133,7 +133,7 @@ const Contact: React.FC = () => {
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300"
                     >
                       <option value="custom-development">Custom Development</option>
                       <option value="web-mobile">Web & Mobile Apps</option>
@@ -155,18 +155,15 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 resize-none"
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-300 resize-none"
                     placeholder="Tell us about your project, requirements, and goals..."
                   />
                 </div>
                 
                 <motion.button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 hover:shadow-2xl transition-all duration-300"
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)"
-                  }}
+                  className="w-full btn-primary flex items-center justify-center space-x-3"
+                  whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <Send className="w-5 h-5" />
@@ -191,21 +188,21 @@ const Contact: React.FC = () => {
                 return (
                   <motion.div
                     key={index}
-                    className="glass p-6 rounded-3xl hover:glow transition-all duration-300"
+                    className="card-shadow p-6 rounded-2xl transition-all duration-300"
                     whileHover={{ x: 5 }}
                   >
                     <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-primary rounded-xl flex items-center justify-center flex-shrink-0">
                         <Icon className="w-6 h-6 text-white" />
                       </div>
                       <div>
-                        <h4 className="font-orbitron font-semibold text-lg mb-1">
+                        <h4 className="font-semibold text-lg mb-1 text-gray-900 dark:text-white">
                           {info.title}
                         </h4>
                         <p className="text-primary font-medium mb-1">
                           {info.value}
                         </p>
-                        <p className="text-muted-foreground text-sm">
+                        <p className="text-gray-600 dark:text-gray-400 text-sm">
                           {info.description}
                         </p>
                       </div>
@@ -216,13 +213,13 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Quick Actions */}
-            <div className="glass p-8 rounded-3xl">
-              <h4 className="font-orbitron font-semibold text-xl mb-6">
+            <div className="card-shadow p-8 rounded-2xl">
+              <h4 className="font-semibold text-xl mb-6 text-gray-900 dark:text-white">
                 Quick Actions
               </h4>
               <div className="space-y-4">
                 <motion.button
-                  className="w-full flex items-center space-x-3 p-4 hover:bg-muted/20 rounded-2xl transition-colors duration-300"
+                  className="w-full flex items-center space-x-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300"
                   whileHover={{ x: 5 }}
                 >
                   <Calendar className="w-5 h-5 text-primary" />
@@ -230,24 +227,24 @@ const Contact: React.FC = () => {
                 </motion.button>
                 
                 <motion.button
-                  className="w-full flex items-center space-x-3 p-4 hover:bg-muted/20 rounded-2xl transition-colors duration-300"
+                  className="w-full flex items-center space-x-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300"
                   whileHover={{ x: 5 }}
                 >
-                  <MessageCircle className="w-5 h-5 text-secondary" />
+                  <MessageCircle className="w-5 h-5 text-green-600" />
                   <span>Start Live Chat</span>
                 </motion.button>
               </div>
             </div>
 
             {/* Map Placeholder */}
-            <div className="glass p-8 rounded-3xl">
-              <h4 className="font-orbitron font-semibold text-xl mb-4">
+            <div className="card-shadow p-8 rounded-2xl">
+              <h4 className="font-semibold text-xl mb-4 text-gray-900 dark:text-white">
                 Our Location
               </h4>
-              <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl flex items-center justify-center">
+              <div className="w-full h-48 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
                 <div className="text-center">
                   <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
                     Interactive map coming soon
                   </p>
                 </div>

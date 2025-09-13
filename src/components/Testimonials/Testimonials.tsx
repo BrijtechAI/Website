@@ -72,7 +72,7 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="py-24">
+    <section id="testimonials" className="py-24 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -81,10 +81,10 @@ const Testimonials: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             Client <span className="gradient-text">Testimonials</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Hear from our clients about their transformative experiences and 
             the impact of our innovative solutions on their businesses
           </p>
@@ -92,9 +92,9 @@ const Testimonials: React.FC = () => {
 
         <div className="relative max-w-6xl mx-auto">
           {/* Main Testimonial Display */}
-          <div className="glass rounded-3xl p-8 md:p-12 relative overflow-hidden">
+          <div className="card-shadow rounded-2xl p-8 md:p-12 relative overflow-hidden">
             {/* Background Quote */}
-            <Quote className="absolute top-8 right-8 w-24 h-24 text-primary/10" />
+            <Quote className="absolute top-8 right-8 w-24 h-24 text-gray-200 dark:text-gray-700" />
             
             <AnimatePresence mode="wait">
               <motion.div
@@ -120,13 +120,13 @@ const Testimonials: React.FC = () => {
                     </div>
                     
                     <div className="mt-4">
-                      <h4 className="text-xl font-orbitron font-semibold">
+                      <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
                         {testimonials[currentIndex].name}
                       </h4>
                       <p className="text-primary font-medium">
                         {testimonials[currentIndex].position}
                       </p>
-                      <p className="text-muted-foreground">
+                      <p className="text-gray-600 dark:text-gray-400">
                         {testimonials[currentIndex].company}
                       </p>
                       <div className="flex justify-center lg:justify-start mt-2">
@@ -139,15 +139,15 @@ const Testimonials: React.FC = () => {
 
                   {/* Testimonial Content */}
                   <div className="flex-1">
-                    <blockquote className="text-lg md:text-xl leading-relaxed text-center lg:text-left mb-6">
+                    <blockquote className="text-lg md:text-xl leading-relaxed text-center lg:text-left mb-6 text-gray-700 dark:text-gray-300">
                       "{testimonials[currentIndex].text}"
                     </blockquote>
                     
                     <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                      <span className="px-4 py-2 bg-gradient-to-r from-primary/20 to-secondary/20 text-primary rounded-full text-sm font-medium border border-primary/20">
+                      <span className="px-4 py-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full text-sm font-medium">
                         {testimonials[currentIndex].project}
                       </span>
-                      <span className="px-4 py-2 bg-gradient-to-r from-secondary/20 to-accent/20 text-secondary rounded-full text-sm font-medium border border-secondary/20">
+                      <span className="px-4 py-2 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 rounded-full text-sm font-medium">
                         {testimonials[currentIndex].industry}
                       </span>
                     </div>
@@ -160,7 +160,7 @@ const Testimonials: React.FC = () => {
             <div className="absolute top-1/2 left-4 right-4 flex justify-between items-center -translate-y-1/2">
               <motion.button
                 onClick={prevTestimonial}
-                className="w-12 h-12 glass rounded-full flex items-center justify-center hover:glow transition-all duration-300"
+                className="w-12 h-12 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center hover:border-primary transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -169,7 +169,7 @@ const Testimonials: React.FC = () => {
               
               <motion.button
                 onClick={nextTestimonial}
-                className="w-12 h-12 glass rounded-full flex items-center justify-center hover:glow transition-all duration-300"
+                className="w-12 h-12 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-full flex items-center justify-center hover:border-primary transition-all duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -186,8 +186,8 @@ const Testimonials: React.FC = () => {
                 onClick={() => setCurrentIndex(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   index === currentIndex
-                    ? 'bg-gradient-to-r from-primary to-secondary'
-                    : 'bg-muted hover:bg-muted-foreground'
+                    ? 'bg-primary'
+                    : 'bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500'
                 }`}
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.9 }}
@@ -203,14 +203,14 @@ const Testimonials: React.FC = () => {
             viewport={{ once: true }}
             className="mt-16 text-center"
           >
-            <h3 className="text-lg font-orbitron font-semibold mb-8 text-muted-foreground">
+            <h3 className="text-lg font-semibold mb-8 text-gray-600 dark:text-gray-400">
               Trusted by Leading Companies
             </h3>
             <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
               {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={index}
-                  className="text-2xl font-bold"
+                  className="text-2xl font-bold text-gray-400 dark:text-gray-500"
                   whileHover={{ scale: 1.1, opacity: 1 }}
                 >
                   {testimonial.company.replace(/\s+/g, '')}

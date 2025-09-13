@@ -4,15 +4,15 @@
 
 :root {
   /* Light theme colors */
-  --background: 255 255 255;
+  --background: 248 250 252;
   --foreground: 10 10 10;
   --card: 255 255 255;
   --card-foreground: 10 10 10;
-  --primary: 0 212 255;
+  --primary: 59 130 246;
   --primary-foreground: 255 255 255;
-  --secondary: 139 92 246;
+  --secondary: 100 116 139;
   --secondary-foreground: 255 255 255;
-  --accent: 6 255 165;
+  --accent: 16 185 129;
   --accent-foreground: 10 10 10;
   --muted: 245 245 245;
   --muted-foreground: 115 115 115;
@@ -28,11 +28,11 @@
   --foreground: 255 255 255;
   --card: 20 20 20;
   --card-foreground: 255 255 255;
-  --primary: 0 212 255;
+  --primary: 59 130 246;
   --primary-foreground: 10 10 10;
-  --secondary: 139 92 246;
+  --secondary: 148 163 184;
   --secondary-foreground: 255 255 255;
-  --accent: 6 255 165;
+  --accent: 16 185 129;
   --accent-foreground: 10 10 10;
   --muted: 30 30 30;
   --muted-foreground: 160 160 160;
@@ -66,36 +66,18 @@
   }
   
   .gradient-text {
-    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
   }
   
-  .glass {
-    @apply backdrop-blur-xl bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10;
+  .card-shadow {
+    @apply bg-white dark:bg-card border border-border shadow-sm hover:shadow-md transition-shadow duration-300;
   }
   
-  .glow {
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+  .btn-primary {
+    @apply bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors duration-300;
   }
   
-  .glow-secondary {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
-  }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-  
-  @keyframes glow {
-    from { box-shadow: 0 0 20px rgba(0, 212, 255, 0.5); }
-    to { box-shadow: 0 0 30px rgba(0, 212, 255, 0.8), 0 0 40px rgba(139, 92, 246, 0.6); }
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground px-6 py-3 rounded-lg font-semibold hover:bg-secondary/90 transition-colors duration-300;
   }
 }

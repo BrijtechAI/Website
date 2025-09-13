@@ -99,7 +99,7 @@ const Portfolio: React.FC = () => {
     : projects.filter(project => project.category === activeTab);
 
   return (
-    <section id="portfolio" className="py-24 bg-muted/20">
+    <section id="portfolio" className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -108,10 +108,10 @@ const Portfolio: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             Our <span className="gradient-text">Portfolio</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Explore our collection of innovative projects that showcase our expertise 
             in delivering cutting-edge solutions across various industries
           </p>
@@ -124,8 +124,8 @@ const Portfolio: React.FC = () => {
               key={category.id}
               className={`px-6 py-3 rounded-2xl font-medium transition-all duration-300 ${
                 activeTab === category.id
-                  ? 'bg-gradient-to-r from-primary to-secondary text-white'
-                  : 'glass hover:glow'
+                  ? 'bg-primary text-white'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-primary'
               }`}
               onClick={() => setActiveTab(category.id)}
               whileHover={{ scale: 1.05 }}
@@ -148,7 +148,7 @@ const Portfolio: React.FC = () => {
               className="group"
             >
               <motion.div
-                className="glass rounded-3xl overflow-hidden hover:glow transition-all duration-300"
+                className="card-shadow rounded-2xl overflow-hidden transition-all duration-300"
                 whileHover={{ y: -5 }}
               >
                 <div className="relative overflow-hidden">
@@ -178,30 +178,30 @@ const Portfolio: React.FC = () => {
                 
                 <div className="p-8">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-2xl font-orbitron font-semibold">
+                    <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
                       {project.title}
                     </h3>
-                    <span className="text-sm text-muted-foreground bg-muted px-3 py-1 rounded-full">
+                    <span className="text-sm text-gray-600 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-3 py-1 rounded-full">
                       {project.industry}
                     </span>
                   </div>
                   
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
                     {project.description}
                   </p>
                   
                   <div className="space-y-4 mb-6">
                     <div>
                       <h4 className="font-semibold text-primary mb-1">Challenge:</h4>
-                      <p className="text-sm text-muted-foreground">{project.challenge}</p>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{project.challenge}</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-secondary mb-1">Solution:</h4>
-                      <p className="text-sm text-muted-foreground">{project.solution}</p>
+                      <h4 className="font-semibold text-green-600 mb-1">Solution:</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{project.solution}</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-accent mb-1">Result:</h4>
-                      <p className="text-sm text-muted-foreground">{project.result}</p>
+                      <h4 className="font-semibold text-blue-600 mb-1">Result:</h4>
+                      <p className="text-sm text-gray-600 dark:text-gray-300">{project.result}</p>
                     </div>
                   </div>
                   
@@ -209,7 +209,7 @@ const Portfolio: React.FC = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="text-xs bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground px-3 py-1 rounded-full border border-primary/20"
+                        className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full"
                       >
                         {tech}
                       </span>
@@ -217,10 +217,10 @@ const Portfolio: React.FC = () => {
                   </div>
                   
                   <motion.button
-                    className="group/btn flex items-center text-primary hover:text-secondary transition-colors duration-300"
+                    className="group/btn flex items-center text-primary hover:text-primary/80 transition-colors duration-300 font-medium"
                     whileHover={{ x: 5 }}
                   >
-                    <span className="font-medium">View Case Study</span>
+                    <span>View Case Study</span>
                     <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </motion.button>
                 </div>

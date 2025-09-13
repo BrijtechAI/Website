@@ -27,7 +27,7 @@ const About: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-muted/20">
+    <section id="about" className="py-24 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -36,10 +36,10 @@ const About: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             About <span className="gradient-text">Brijtech</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We are a forward-thinking software development company specializing in creating 
             innovative, scalable solutions that transform businesses and accelerate digital transformation
           </p>
@@ -58,16 +58,16 @@ const About: React.FC = () => {
                 className="group"
               >
                 <motion.div
-                  className="glass p-8 rounded-3xl h-full hover:glow transition-all duration-300"
+                  className="card-shadow p-8 rounded-2xl h-full transition-all duration-300"
                   whileHover={{ y: -5 }}
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-orbitron font-semibold mb-4">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
                     {value.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     {value.description}
                   </p>
                 </motion.div>
@@ -82,7 +82,7 @@ const About: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mt-24 glass p-12 rounded-3xl"
+          className="mt-24 card-shadow p-12 rounded-2xl"
         >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -96,10 +96,10 @@ const About: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 300, damping: 10 }}
               >
-                <div className="text-3xl md:text-4xl font-orbitron font-bold gradient-text mb-2">
+                <div className="text-3xl md:text-4xl font-bold text-primary mb-2">
                   {stat.number}
                 </div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="text-gray-600 dark:text-gray-400">{stat.label}</div>
               </motion.div>
             ))}
           </div>

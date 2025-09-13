@@ -62,7 +62,7 @@ const WhyChooseUs: React.FC = () => {
   };
 
   return (
-    <section id="why-choose-us" className="py-24">
+    <section id="why-choose-us" className="py-24 bg-gray-50 dark:bg-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -71,10 +71,10 @@ const WhyChooseUs: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-orbitron font-bold mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
             Why Choose <span className="gradient-text">Brijtech</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             We combine cutting-edge technology with proven expertise to deliver 
             solutions that drive innovation and accelerate business growth
           </p>
@@ -93,29 +93,29 @@ const WhyChooseUs: React.FC = () => {
                 className="group"
               >
                 <motion.div
-                  className="glass p-8 rounded-3xl h-full hover:glow transition-all duration-300"
+                  className="card-shadow p-8 rounded-2xl h-full transition-all duration-300"
                   whileHover={{ y: -5 }}
                 >
                   <div className="flex items-center justify-between mb-6">
-                    <div className={`w-16 h-16 bg-gradient-to-br ${getColorClasses(advantage.color)} rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                    <div className="w-16 h-16 bg-primary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Icon className="w-8 h-8 text-white" />
                     </div>
-                    <div className={`text-2xl font-orbitron font-bold text-${advantage.color}`}>
+                    <div className="text-2xl font-bold text-primary">
                       {advantage.stat}
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-orbitron font-semibold mb-4">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
                     {advantage.title}
                   </h3>
                   
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                     {advantage.description}
                   </p>
                   
                   {/* Hover effect indicator */}
                   <motion.div
-                    className={`h-1 bg-gradient-to-r ${getColorClasses(advantage.color)} rounded-full mt-6 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`}
+                    className="h-1 bg-primary rounded-full mt-6 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                   />
                 </motion.div>
               </motion.div>
@@ -132,11 +132,8 @@ const WhyChooseUs: React.FC = () => {
           className="text-center mt-16"
         >
           <motion.button
-            className="bg-gradient-to-r from-primary to-secondary text-white px-12 py-6 rounded-2xl font-semibold text-lg hover:shadow-2xl transition-all duration-300"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)"
-            }}
+            className="btn-primary px-12 py-4 text-lg"
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Start Your Project Today

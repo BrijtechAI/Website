@@ -1,107 +1,151 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Sparkles } from 'lucide-react';
-import AnimatedBackground from './AnimatedBackground';
+import { ArrowRight, Play, CheckCircle, Users, Award, TrendingUp } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <AnimatedBackground />
+    <section id="home" className="relative py-20 lg:py-32 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="space-y-8"
-        >
-          {/* Badge */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content */}
           <motion.div
-            className="inline-flex items-center space-x-2 glass rounded-full px-6 py-3"
-            whileHover={{ scale: 1.05 }}
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-8"
           >
-            <Sparkles className="w-5 h-5 text-accent" />
-            <span className="text-sm font-medium">Pioneering Tomorrow's Technology</span>
-          </motion.div>
-
-          {/* Main Headline */}
-          <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-orbitron font-bold leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            Engineering the{' '}
-            <span className="gradient-text">Future</span>
-            <br />
-            of Software
-          </motion.h1>
-
-          {/* Subtitle */}
-          <motion.p
-            className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            We transform ambitious ideas into scalable, intelligent software solutions 
-            that drive innovation and accelerate business growth
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center pt-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            <motion.button
-              className="group bg-gradient-to-r from-primary to-secondary text-white px-8 py-4 rounded-2xl font-semibold text-lg flex items-center space-x-3 hover:shadow-2xl transition-all duration-300"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)"
-              }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span>Get Started</span>
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-
-            <motion.button
-              className="group glass px-8 py-4 rounded-2xl font-semibold text-lg flex items-center space-x-3 hover:glow transition-all duration-300"
+            {/* Badge */}
+            <motion.div
+              className="inline-flex items-center space-x-2 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 rounded-full px-4 py-2 text-sm font-medium"
               whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
             >
-              <Play className="w-5 h-5" />
-              <span>Watch Demo</span>
-            </motion.button>
+              <Award className="w-4 h-4" />
+              <span>Trusted by 500+ Companies Worldwide</span>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-gray-900 dark:text-white"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Custom Software Development{' '}
+              <span className="gradient-text">Solutions</span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p
+              className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              We help businesses transform their ideas into powerful, scalable software solutions. 
+              From web applications to mobile apps and enterprise systems.
+            </motion.p>
+
+            {/* Key Benefits */}
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              {[
+                'Enterprise-grade security',
+                'Scalable architecture',
+                '24/7 support & maintenance',
+                'Agile development process'
+              ].map((benefit, index) => (
+                <div key={index} className="flex items-center space-x-2">
+                  <CheckCircle className="w-5 h-5 text-green-500" />
+                  <span className="text-gray-700 dark:text-gray-300">{benefit}</span>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <motion.button
+                className="btn-primary flex items-center space-x-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span>Start Your Project</span>
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+
+              <motion.button
+                className="btn-secondary flex items-center space-x-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Play className="w-5 h-5" />
+                <span>View Portfolio</span>
+              </motion.button>
+            </motion.div>
           </motion.div>
 
-          {/* Stats */}
+          {/* Right Content - Hero Image */}
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 pt-16 max-w-4xl mx-auto"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="relative"
           >
-            {[
-              { number: '500+', label: 'Projects Delivered' },
-              { number: '98%', label: 'Client Satisfaction' },
-              { number: '50+', label: 'Global Clients' },
-              { number: '24/7', label: 'Support Available' },
-            ].map((stat, index) => (
+            <div className="card-shadow rounded-2xl p-8 bg-white dark:bg-gray-800">
+              <img
+                src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Software Development Team"
+                className="w-full h-64 object-cover rounded-lg mb-6"
+              />
+              <div className="space-y-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                  Professional Development Team
+                </h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Our experienced developers use cutting-edge technologies to build robust, scalable applications.
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Stats Section */}
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 pt-12 border-t border-gray-200 dark:border-gray-700"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
+          {[
+            { icon: Users, number: '500+', label: 'Projects Delivered' },
+            { icon: Award, number: '98%', label: 'Client Satisfaction' },
+            { icon: TrendingUp, number: '50+', label: 'Global Clients' },
+            { icon: CheckCircle, number: '24/7', label: 'Support Available' },
+          ].map((stat, index) => {
+            const Icon = stat.icon;
+            return (
               <motion.div
                 key={index}
                 className="text-center"
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="text-3xl md:text-4xl font-orbitron font-bold gradient-text">
+                <Icon className="w-8 h-8 text-primary mx-auto mb-2" />
+                <div className="text-3xl font-bold text-gray-900 dark:text-white">
                   {stat.number}
                 </div>
-                <div className="text-muted-foreground mt-2">{stat.label}</div>
+                <div className="text-gray-600 dark:text-gray-400 mt-1">{stat.label}</div>
               </motion.div>
-            ))}
-          </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </section>
