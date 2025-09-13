@@ -60,7 +60,7 @@ const Header: React.FC = () => {
           {/* Logo */}
           <Link to="/">
             <motion.div
-              className="flex items-center space-x-3 hover-lift"
+              className="flex items-center space-x-3"
               whileHover={{ scale: 1.05, y: -2 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
