@@ -121,21 +121,21 @@ const Hero: React.FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Placeholder for future graphic */}
+          {/* Right Content - Futuristic Bridge Illustration */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={heroVisible ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="relative flex justify-center items-center"
           >
-            <div className="w-full h-96 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center">
-                  <Brain className="w-16 h-16 text-primary/60" />
-                </div>
-                <h3 className="text-xl font-semibold text-muted-foreground">AI-Powered Solutions</h3>
-                <p className="text-sm text-muted-foreground mt-2">Bridging technology gaps with innovation</p>
-              </div>
+            <div className="w-[1000px] h-full flex items-center justify-center">
+              <motion.img
+                src="/bridge img.png"
+                alt="Futuristic AI Bridge - Bridging Technology Gaps with AI"
+                className="w-full h-full max-w-4xl object-contain"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              />
             </div>
           </motion.div>
         </div>

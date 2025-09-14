@@ -193,4 +193,26 @@
       left: 100%;
     }
   }
+
+  /* Video slow motion effect */
+  @keyframes videoSlow {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.01);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  /* Video container styles */
+  video {
+    animation-play-state: running;
+  }
+
+  video:hover {
+    animation-play-state: paused;
+  }
 }
