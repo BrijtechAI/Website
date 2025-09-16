@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow typical build and asset directories (none for GH Pages build root)
+
+Sitemap: https://brijtechai.github.io/Website/sitemap.xml
+
+
