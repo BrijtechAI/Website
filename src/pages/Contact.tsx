@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Calendar, MessageCircle, Clock, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Calendar, Clock, Globe, CheckCircle, AlertCircle } from 'lucide-react';
+import CalendlyBooking from '../components/CalendlyBooking/CalendlyBooking';
+import EmailService from '../services/emailService';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -13,12 +15,46 @@ const Contact: React.FC = () => {
     budget: '10k-25k',
     timeline: '1-3-months'
   });
+  const [showCalendly, setShowCalendly] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can integrate with your backend API here
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const result = await EmailService.processProjectForm(formData);
+      setSubmitStatus({
+        type: result.success ? 'success' : 'error',
+        message: result.message
+      });
+
+      if (result.success) {
+        // Reset form on successful submission
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: '',
+          service: 'custom-development',
+          budget: '10k-25k',
+          timeline: '1-3-months'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'There was an error processing your request. Please try again or contact us directly at brijtech2025@gmail.com'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -238,17 +274,53 @@ const Contact: React.FC = () => {
                     />
                   </div>
                   
+                  {/* Status Message */}
+                  {submitStatus.type && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`p-4 rounded-2xl flex items-start space-x-3 ${
+                        submitStatus.type === 'success'
+                          ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
+                          : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
+                      }`}
+                    >
+                      {submitStatus.type === 'success' ? (
+                        <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                      ) : (
+                        <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                      )}
+                      <p className={`text-sm ${
+                        submitStatus.type === 'success'
+                          ? 'text-green-800 dark:text-green-200'
+                          : 'text-red-800 dark:text-red-200'
+                      }`}>
+                        {submitStatus.message}
+                      </p>
+                    </motion.div>
+                  )}
+
                   <motion.button
                     type="submit"
-                    className="w-full brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 hover:shadow-2xl transition-all duration-300"
+                    disabled={isSubmitting}
+                    className="w-full brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 hover:shadow-2xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     whileHover={{ 
-                      scale: 1.02,
-                      boxShadow: "0 0 30px rgba(0, 212, 255, 0.6)"
+                      scale: isSubmitting ? 1 : 1.02,
+                      boxShadow: isSubmitting ? "none" : "0 0 30px rgba(0, 212, 255, 0.6)"
                     }}
-                    whileTap={{ scale: 0.98 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                   >
-                    <Send className="w-5 h-5" />
-                    <span>Send Message</span>
+                    {isSubmitting ? (
+                      <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                        <span>Processing...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5" />
+                        <span>Send Message</span>
+                      </>
+                    )}
                   </motion.button>
                 </form>
               </div>
@@ -312,49 +384,36 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              {/* Quick Actions */}
-              <div className="glass p-8 rounded-3xl">
-                <h4 className="font-orbitron font-semibold text-xl mb-6">
-                  Quick Actions
-                </h4>
-                <div className="space-y-4">
-                  <motion.button
-                    className="w-full flex items-center space-x-3 p-4 hover:bg-muted/20 rounded-2xl transition-colors duration-300"
-                    whileHover={{ x: 5 }}
-                  >
-                    <Calendar className="w-5 h-5 text-primary" />
-                    <span>Schedule a Free Consultation</span>
-                  </motion.button>
-                  
-                  <motion.button
-                    className="w-full flex items-center space-x-3 p-4 hover:bg-muted/20 rounded-2xl transition-colors duration-300"
-                    whileHover={{ x: 5 }}
-                  >
-                    <MessageCircle className="w-5 h-5 text-secondary" />
-                    <span>Start Live Chat</span>
-                  </motion.button>
-                </div>
-              </div>
-
-              {/* Map Placeholder */}
-              <div className="glass p-8 rounded-3xl">
-                <h4 className="font-orbitron font-semibold text-xl mb-4">
-                  Our Location
-                </h4>
-                <div className="w-full h-48 bg-primary/10 rounded-2xl flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                    <p className="text-sm text-muted-foreground">
-                      San Francisco, California
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Interactive map integration available
-                    </p>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Schedule Consultation Section */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 via-transparent to-accent/5">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-orbitron font-bold mb-4">
+              Ready to Start Your <span className="gradient-text">Project</span>?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Book a free 30-minute consultation with our experts to discuss your project requirements and get personalized recommendations.
+            </p>
+            <motion.button
+              onClick={() => setShowCalendly(true)}
+              className="brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 mx-auto hover:shadow-lg transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <Calendar className="w-5 h-5" />
+              <span>Schedule Free Consultation</span>
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
@@ -414,6 +473,12 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Calendly Booking Modal */}
+      <CalendlyBooking 
+        isOpen={showCalendly} 
+        onClose={() => setShowCalendly(false)} 
+      />
     </div>
   );
 };

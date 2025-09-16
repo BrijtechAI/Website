@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import { Chatbot } from './components/Chatbot';
 import Home from './pages/Home';
 import About from './pages/About';
 import Services from './pages/Services';
@@ -38,6 +39,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
+          <Chatbot />
         </div>
       </Router>
     </ThemeProvider>

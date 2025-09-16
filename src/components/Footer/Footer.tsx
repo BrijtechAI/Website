@@ -1,9 +1,25 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Code2, Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram, ArrowRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
+
+  // Function to handle footer link clicks with scroll to top
+  const handleFooterLinkClick = (href: string) => {
+    // Navigate to the page
+    navigate(href);
+    
+    // Scroll to top after a short delay to ensure page has loaded
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 100);
+  };
+
   const footerLinks = {
     company: [
       { name: 'About Us', href: '/about' },
@@ -32,10 +48,10 @@ const Footer: React.FC = () => {
   };
 
   const socialLinks = [
-    { icon: Twitter, href: 'https://twitter.com/brijtech', name: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com/company/brijtech', name: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com/brijtech', name: 'GitHub' },
-    { icon: Instagram, href: 'https://instagram.com/brijtech', name: 'Instagram' }
+    { icon: Twitter, href: 'https://x.com/BrijtechAI', name: 'Twitter' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/brijtech/', name: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/BrijtechAI', name: 'GitHub' },
+    { icon: Instagram, href: 'https://www.instagram.com/brij.tech/', name: 'Instagram' }
   ];
 
   const handleNewsletterSubmit = (e: React.FormEvent) => {
@@ -53,15 +69,24 @@ const Footer: React.FC = () => {
           <div className="lg:col-span-2">
             <Link to="/">
               <motion.div
-                className="flex items-center space-x-2 mb-6"
-                whileHover={{ scale: 1.05 }}
+                className="flex items-center space-x-3 mb-6"
+                whileHover={{ scale: 1.05, y: -2 }}
+                transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
-                <div className="w-10 h-10 brand-gradient-primary rounded-xl flex items-center justify-center">
-                  <Code2 className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-orbitron font-bold brand-text-gradient">
+                <motion.img 
+                  src="/logo.png" 
+                  alt="Brijtech Logo" 
+                  className="w-12 h-12 object-contain"
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                />
+                <motion.span 
+                  className="text-2xl font-orbitron font-bold brand-text-gradient"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.2 }}
+                >
                   BrijTech
-                </span>
+                </motion.span>
               </motion.div>
             </Link>
             
@@ -97,13 +122,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
+                  <button
+                    onClick={() => handleFooterLinkClick(link.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group w-full text-left"
                   >
                     <span>{link.name}</span>
                     <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -114,13 +139,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.services.map((link, index) => (
                 <li key={index}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
+                  <button
+                    onClick={() => handleFooterLinkClick(link.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group w-full text-left"
                   >
                     <span>{link.name}</span>
                     <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -131,13 +156,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
+                  <button
+                    onClick={() => handleFooterLinkClick(link.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group w-full text-left"
                   >
                     <span>{link.name}</span>
                     <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -148,13 +173,13 @@ const Footer: React.FC = () => {
             <ul className="space-y-3">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
-                  <Link
-                    to={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group"
+                  <button
+                    onClick={() => handleFooterLinkClick(link.href)}
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300 text-sm flex items-center group w-full text-left"
                   >
                     <span>{link.name}</span>
                     <ArrowRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
-                  </Link>
+                  </button>
                 </li>
               ))}
             </ul>

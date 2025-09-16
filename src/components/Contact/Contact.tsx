@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Calendar, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Calendar, CheckCircle, AlertCircle } from 'lucide-react';
+import CalendlyBooking from '../CalendlyBooking/CalendlyBooking';
+import EmailService from '../../services/emailService';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,11 +12,43 @@ const Contact: React.FC = () => {
     message: '',
     service: 'custom-development'
   });
+  const [showCalendly, setShowCalendly] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const result = await EmailService.processContactForm(formData);
+      setSubmitStatus({
+        type: result.success ? 'success' : 'error',
+        message: result.message
+      });
+
+      if (result.success) {
+        // Reset form on successful submission
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          message: '',
+          service: 'custom-development'
+        });
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: 'There was an error processing your request. Please try again or contact us directly at brijtech2025@gmail.com'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -160,14 +194,50 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 
+                {/* Status Message */}
+                {submitStatus.type && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className={`p-4 rounded-xl flex items-start space-x-3 ${
+                      submitStatus.type === 'success'
+                        ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'
+                        : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'
+                    }`}
+                  >
+                    {submitStatus.type === 'success' ? (
+                      <CheckCircle className="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+                    ) : (
+                      <AlertCircle className="w-5 h-5 text-red-600 dark:text-red-400 flex-shrink-0 mt-0.5" />
+                    )}
+                    <p className={`text-sm ${
+                      submitStatus.type === 'success'
+                        ? 'text-green-800 dark:text-green-200'
+                        : 'text-red-800 dark:text-red-200'
+                    }`}>
+                      {submitStatus.message}
+                    </p>
+                  </motion.div>
+                )}
+
                 <motion.button
                   type="submit"
-                  className="w-full btn-primary flex items-center justify-center space-x-3"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={isSubmitting}
+                  className="w-full btn-primary flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                  whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                  whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
                 >
-                  <Send className="w-5 h-5" />
-                  <span>Send Message</span>
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      <span>Send Message</span>
+                    </>
+                  )}
                 </motion.button>
               </form>
             </div>
@@ -212,47 +282,37 @@ const Contact: React.FC = () => {
               })}
             </div>
 
-            {/* Quick Actions */}
-            <div className="card-shadow p-8 rounded-2xl">
-              <h4 className="font-semibold text-xl mb-6 text-gray-900 dark:text-white">
-                Quick Actions
-              </h4>
-              <div className="space-y-4">
-                <motion.button
-                  className="w-full flex items-center space-x-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300"
-                  whileHover={{ x: 5 }}
-                >
-                  <Calendar className="w-5 h-5 text-primary" />
-                  <span>Schedule a Free Consultation</span>
-                </motion.button>
-                
-                <motion.button
-                  className="w-full flex items-center space-x-3 p-4 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-xl transition-colors duration-300"
-                  whileHover={{ x: 5 }}
-                >
-                  <MessageCircle className="w-5 h-5 text-green-600" />
-                  <span>Start Live Chat</span>
-                </motion.button>
-              </div>
-            </div>
+            {/* Schedule Consultation Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="mt-8 text-center"
+            >
+              <motion.button
+                onClick={() => setShowCalendly(true)}
+                className="brand-gradient-primary text-white px-8 py-4 rounded-2xl font-semibold flex items-center justify-center space-x-3 mx-auto hover:shadow-lg transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Calendar className="w-5 h-5" />
+                <span>Schedule Free Consultation</span>
+              </motion.button>
+              <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                Book a 30-minute free consultation with our experts
+              </p>
+            </motion.div>
 
-            {/* Map Placeholder */}
-            <div className="card-shadow p-8 rounded-2xl">
-              <h4 className="font-semibold text-xl mb-4 text-gray-900 dark:text-white">
-                Our Location
-              </h4>
-              <div className="w-full h-48 bg-gray-100 dark:bg-gray-700 rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-primary mx-auto mb-2" />
-                  <p className="text-sm text-gray-600 dark:text-gray-400">
-                    Interactive map coming soon
-                  </p>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
+
+      {/* Calendly Booking Modal */}
+      <CalendlyBooking 
+        isOpen={showCalendly} 
+        onClose={() => setShowCalendly(false)} 
+      />
     </section>
   );
 };

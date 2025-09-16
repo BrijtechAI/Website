@@ -198,11 +198,11 @@ const Portfolio: React.FC = () => {
                       <p className="text-sm text-gray-600 dark:text-gray-300">{project.challenge}</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-green-600 mb-1">Solution:</h4>
+                      <h4 className="font-semibold text-secondary mb-1">Solution:</h4>
                       <p className="text-sm text-gray-600 dark:text-gray-300">{project.solution}</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-blue-600 mb-1">Result:</h4>
+                      <h4 className="font-semibold text-accent mb-1">Result:</h4>
                       <p className="text-sm text-gray-600 dark:text-gray-300">{project.result}</p>
                     </div>
                   </div>
@@ -211,7 +211,7 @@ const Portfolio: React.FC = () => {
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full"
+                        className="text-xs brand-gradient-primary text-white px-3 py-1 rounded-full font-medium shadow-sm"
                       >
                         {tech}
                       </span>
