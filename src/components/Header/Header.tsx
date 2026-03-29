@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Menu, X, Sun, Moon, ChevronDown } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
+import { publicUrl } from '../../utils/publicUrl';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,7 +66,7 @@ const Header: React.FC = () => {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <motion.img 
-                src="/logo.png" 
+                src={publicUrl('logo.png')} 
                 alt="Brijtech Logo" 
                 className="w-12 h-12 object-contain"
                 whileHover={{ rotate: 360 }}

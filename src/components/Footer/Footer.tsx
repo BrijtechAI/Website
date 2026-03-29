@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram, ArrowRight } from 'lucide-react';
 import EmailService from '../../services/emailService';
+import { publicUrl } from '../../utils/publicUrl';
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
@@ -103,7 +104,7 @@ const Footer: React.FC = () => {
                 transition={{ type: "spring", stiffness: 400, damping: 10 }}
               >
                 <motion.img 
-                  src="/logo.png" 
+                  src={publicUrl('logo.png')} 
                   alt="Brijtech Logo" 
                   className="w-12 h-12 object-contain"
                   whileHover={{ rotate: 360 }}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { publicUrl } from '../../utils/publicUrl';
 import { ArrowRight, Play, CheckCircle, Users, Award, TrendingUp, Brain, Zap } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
@@ -130,7 +131,7 @@ const Hero: React.FC = () => {
           >
             <div className="w-[1000px] h-full flex items-center justify-center">
               <motion.img
-                src="/bridge img.png"
+                src={publicUrl('bridge img.png')}
                 alt="Futuristic AI Bridge - Bridging Technology Gaps with AI"
                 className="w-full h-full max-w-4xl object-contain"
                 whileHover={{ scale: 1.05 }}
