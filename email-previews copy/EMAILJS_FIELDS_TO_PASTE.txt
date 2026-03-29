@@ -1,0 +1,47 @@
+=== Copy HTML body from the .html files next to this file ===
+  Template A: emailjs-template-a-company-internal.html   (select all → paste into EmailJS Content / HTML)
+  Template B: emailjs-template-b-user-confirmation.html (select all → paste into EmailJS Content / HTML)
+
+=== Template A — fields (EmailJS template editor) ===
+Subject:
+[{{submission_kind}}] {{from_name}} — {{company}}
+
+To Email:
+{{to_email}}
+
+From Name:
+{{sender_name}}
+
+Reply To:
+{{reply_to}}
+
+From Email:
+(use your connected service; enable "Use Default Email Address" if shown)
+
+Cc:
+(leave empty)
+
+Bcc:
+(leave empty)
+
+=== Template B — fields ===
+Subject:
+Thank you, {{to_name}} — BrijTech received your {{submission_kind}}
+
+To Email:
+{{to_email}}
+
+From Name:
+{{sender_name}}
+
+Reply To:
+{{reply_to}}
+
+From Email:
+(use default / connected service)
+
+Cc:
+(leave empty)
+
+Bcc:
+(leave empty)

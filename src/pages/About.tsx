@@ -256,7 +256,7 @@ const About: React.FC = () => {
                   Innovation at Our Core
                 </h3>
                 <p className="text-muted-foreground">
-                  From our headquarters in San Francisco to our global team, 
+                  From our headquarters in San Francisco and Bangalore to our global team, 
                   we're united by a shared passion for creating technology 
                   that makes a difference.
                 </p>

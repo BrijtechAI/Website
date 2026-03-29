@@ -200,7 +200,7 @@ const Chatbot: React.FC = () => {
     addBotMessage("Perfect! I've collected your information. Our team will review your requirements and get back to you within 24 hours. 🚀");
     
     setTimeout(() => {
-      addBotMessage("In the meantime, feel free to explore our portfolio or reach out directly at brijtech2025@gmail.com. Thank you for choosing BrijTech! ✨");
+      addBotMessage("In the meantime, feel free to explore our portfolio or reach out directly at support@brijtech.org. Thank you for choosing BrijTech! ✨");
     }, 2000);
     
     setShowContactForm(false);

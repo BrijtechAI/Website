@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'There was an error processing your request. Please try again or contact us directly at brijtech2025@gmail.com'
+        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.org'
       });
     } finally {
       setIsSubmitting(false);
@@ -62,20 +62,20 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      value: 'hello@neotech.com',
+      value: 'support@brijtech.org',
       description: 'Send us an email anytime'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      value: '+1 (555) 123-4567',
+      value: '+91 9782174123',
       description: '24/7 support available'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      value: 'San Francisco, CA',
-      description: 'Silicon Valley headquarters'
+      value: 'San Francisco, CA\nBangalore, India',
+      description: 'Silicon Valley & India headquarters'
     }
   ];
 
@@ -269,7 +269,7 @@ const Contact: React.FC = () => {
                         <h4 className="font-semibold text-lg mb-1 text-gray-900 dark:text-white">
                           {info.title}
                         </h4>
-                        <p className="text-primary font-medium mb-1">
+                        <p className="text-primary font-medium mb-1 whitespace-pre-line">
                           {info.value}
                         </p>
                         <p className="text-gray-600 dark:text-gray-400 text-sm">

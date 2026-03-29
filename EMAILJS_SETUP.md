@@ -16,141 +16,64 @@ This guide will help you set up EmailJS to enable email functionality for your c
 4. Follow the setup instructions for your email provider
 5. Note down your **Service ID**
 
-## Step 3: Create Email Templates
+### Why mail shows `brijtech2025@gmail.com` instead of `support@brijtech.org`
 
-### Template 1: Company Notification (Project Request)
-1. Go to **Email Templates**
-2. Click **Create New Template**
-3. Use this template ID: `company_project_notification`
-4. Template content:
+EmailJS sends **through whichever account you connected** under **Email Services**. A **Gmail** service sends as that Gmail address. Changing the text in your website code does **not** change the SMTP “From” address.
 
-**Subject:** New Project Request from {{from_name}} - {{company}}
+To have messages **come from** `support@brijtech.org`:
 
-**Body:**
-```
-Hello BrijTech Team,
+1. **Google Workspace (recommended if `@brijtech.org` is on Google)**  
+   Add an **Email Service** in EmailJS using the **Google** (or Gmail) flow with the **Workspace user** `support@brijtech.org` (or an admin account that is allowed to send as that address). Point both templates at this service if you replace the old one.
 
-A new project request has been submitted through the website:
+2. **Custom SMTP (most hosts: cPanel, Plesk, Zoho, Microsoft 365, etc.)**  
+   In EmailJS → **Email Services** → **Add New Service** → **Custom SMTP**. Enter the SMTP host, port, TLS, and credentials your provider gives for `support@brijtech.org`. Then edit each template and set **Service** to this new SMTP service. The **From** field in the template can usually be `support@brijtech.org` once SMTP authorises it.
 
-Client Details:
-- Name: {{from_name}}
-- Email: {{from_email}}
-- Company: {{company}}
-- Phone: {{phone}}
+3. **Gmail + “Send mail as” (limited)**  
+   In Gmail settings you can add `support@brijtech.org` as a “Send mail as” address (after DNS verification). EmailJS’s Gmail integration may **still** send as the primary Gmail address; if so, use **Custom SMTP** or **Workspace** instead.
 
-Project Details:
-- Service: {{service}}
-- Budget: {{budget}}
-- Timeline: {{timeline}}
-- Message: {{message}}
+**Receiving** internal form mail **at** `support@brijtech.org`: the app already passes `to_email` as `support@brijtech.org`. In the **Brijtech- Template**, set **To Email** to `{{to_email}}` (not a fixed Gmail address).
 
-Submitted on: {{submission_date}} at {{submission_time}}
+**Visitors’ confirmation emails** should also use a service that you are happy shows as the brand (often the same SMTP or Workspace service as above).
 
-Please review and respond within 12 hours.
+## Step 3: Create Email Templates (2 only — free tier)
 
-Best regards,
-BrijTech Website
-```
+The app sends **one internal template** (to your team) and **one confirmation template** (to the visitor). The same variables cover **project requests**, **contact form**, and **newsletter** signups.
 
-### Template 2: User Confirmation (Project Request)
-1. Create another template
-2. Use this template ID: `user_project_confirmation`
-3. Template content:
+**Variables the code sends**
 
-**Subject:** Thank you for your project request - BrijTech
+| Template | Variables |
+|----------|-----------|
+| **Company (internal)** | `submission_kind`, `from_name`, `from_email`, `company`, `phone`, `budget`, `timeline`, `service`, `message`, `submission_date`, `submission_time`, `to_email` |
+| **User (confirmation)** | `submission_kind`, `to_name`, `to_email`, `user_intro`, `company`, `service`, `submission_date`, `response_time` |
 
-**Body:**
-```
-Dear {{to_name}},
+- **Internal template** `submission_kind`: `Project request`, `Contact form`, or `Newsletter signup`.
+- **User confirmation** `submission_kind` from the app: `Project request`, `Contact message`, or `Newsletter`.
+- For contact or newsletter, `phone`, `budget`, and `timeline` are sent as `—` so one layout still works.
 
-Thank you for reaching out to BrijTech! We have received your project request and are excited to learn more about your {{service}} needs.
+**Logo:** Templates use `https://www.brijtech.org/logo.png`. Ensure that URL serves your mark (same file as `public/logo.png` on the site). Header uses a **34px-tall** image beside the wordmark; footer uses **48×48**. `filter: drop-shadow` is omitted for better Outlook/Gmail compatibility.
 
-Here's what happens next:
-- Our team will review your project details
-- We'll analyze your requirements and prepare a customized proposal
-- You'll receive a response within 12 hours maximum
+**Final HTML (source of truth):** Each file is a **single root `<table>`** (the 720px card — no outer gray wrapper). Copy the whole file into the EmailJS HTML body, or paste only the `<table>…</table>` and omit the optional `<!-- ... -->` comment at the top.
 
-Project Summary:
-- Service: {{service}}
-- Company: {{company}}
-- Submitted: {{submission_date}}
+| Template | File to paste |
+|----------|----------------|
+| **A — Company / internal** | [`email-previews/emailjs-template-a-company-internal.html`](email-previews/emailjs-template-a-company-internal.html) |
+| **B — User confirmation** | [`email-previews/emailjs-template-b-user-confirmation.html`](email-previews/emailjs-template-b-user-confirmation.html) |
 
-If you have any urgent questions, feel free to contact us directly at brijtech2025@gmail.com.
+**Layout notes:** Card **max-width 720px**, top accent bar gradient `135deg` (purple → pink → blue → teal). Footer uses a **purple–magenta–rose** gradient (`118deg`) with logo left of the wordmark, body copy indented with the name, and the legal line aligned to the **logo** left edge. Outer background `#f3f1f7`. Outlook may show solid `bgcolor` where gradients are stripped.
 
-We look forward to working with you!
+### Template A — Company / internal notification
 
-Best regards,
-The BrijTech Team
+1. **Email Templates** → **Create New Template** (or edit existing).
+2. Set **To Email** to your team address (e.g. `support@brijtech.org`) if your service reads “to” from the template.
+3. **Subject:** `[{{submission_kind}}] {{from_name}} — {{company}}`
+4. **Content:** Open `email-previews/emailjs-template-a-company-internal.html`, select all, paste into the HTML body. Remove the `<!-- ... -->` comment at the top if you prefer.
 
----
-BrijTech - Bridging Technology Gaps with AI
-Email: brijtech2025@gmail.com
-```
+### Template B — User confirmation
 
-### Template 3: Company Notification (Contact Form)
-1. Create another template
-2. Use this template ID: `company_contact_notification`
-3. Template content:
-
-**Subject:** New Contact Form Submission from {{from_name}}
-
-**Body:**
-```
-Hello BrijTech Team,
-
-A new contact form has been submitted:
-
-Client Details:
-- Name: {{from_name}}
-- Email: {{from_email}}
-- Company: {{company}}
-
-Inquiry Details:
-- Service: {{service}}
-- Message: {{message}}
-
-Submitted on: {{submission_date}} at {{submission_time}}
-
-Please review and respond within 24 hours.
-
-Best regards,
-BrijTech Website
-```
-
-### Template 4: User Confirmation (Contact Form)
-1. Create another template
-2. Use this template ID: `user_contact_confirmation`
-3. Template content:
-
-**Subject:** Thank you for contacting BrijTech
-
-**Body:**
-```
-Dear {{to_name}},
-
-Thank you for contacting BrijTech! We have received your message and appreciate your interest in our {{service}} services.
-
-Here's what happens next:
-- Our team will review your inquiry
-- We'll prepare a personalized response
-- You'll receive a reply within 24 hours maximum
-
-Inquiry Summary:
-- Service: {{service}}
-- Company: {{company}}
-- Submitted: {{submission_date}}
-
-If you have any urgent questions, feel free to contact us directly at brijtech2025@gmail.com.
-
-We look forward to helping you with your technology needs!
-
-Best regards,
-The BrijTech Team
-
----
-BrijTech - Bridging Technology Gaps with AI
-Email: brijtech2025@gmail.com
-```
+1. Create the **second** template.
+2. **To Email:** `{{to_email}}` (must match the variable your app sends).
+3. **Subject:** `Thank you, {{to_name}} — BrijTech received your {{submission_kind}}`
+4. **Content:** Paste from `email-previews/emailjs-template-b-user-confirmation.html` (same as above).
 
 ## Step 4: Get Your Public Key
 
@@ -160,13 +83,13 @@ Email: brijtech2025@gmail.com
 ## Step 5: Update the Email Service Configuration
 
 1. Open `src/services/emailService.ts`
-2. Replace the placeholder values:
+2. Set your **Service ID**, **Public Key**, and **both template IDs** (Template A → `EMAILJS_TEMPLATE_ID_COMPANY`, Template B → `EMAILJS_TEMPLATE_ID_USER`).
 
 ```typescript
-const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID'; // Replace with your service ID
-const EMAILJS_TEMPLATE_ID_COMPANY = 'company_project_notification'; // Your company template ID
-const EMAILJS_TEMPLATE_ID_USER = 'user_project_confirmation'; // Your user template ID
-const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY'; // Replace with your public key
+const EMAILJS_SERVICE_ID = 'your_service_id';
+const EMAILJS_TEMPLATE_ID_COMPANY = 'template_xxxxxxx'; // internal / team
+const EMAILJS_TEMPLATE_ID_USER = 'template_yyyyyyy';  // confirmation to visitor
+const EMAILJS_PUBLIC_KEY = 'your_public_key';
 ```
 
 ## Step 6: Test the Integration

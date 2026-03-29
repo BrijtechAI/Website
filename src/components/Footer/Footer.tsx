@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Code2, Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Twitter, Linkedin, Github, Instagram, ArrowRight } from 'lucide-react';
+import EmailService from '../../services/emailService';
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+  const [newsletterStatus, setNewsletterStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
 
   // Function to handle footer link clicks with scroll to top
   const handleFooterLinkClick = (href: string) => {
@@ -54,10 +61,32 @@ const Footer: React.FC = () => {
     { icon: Instagram, href: 'https://www.instagram.com/brij.tech/', name: 'Instagram' }
   ];
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log('Newsletter subscription');
+    setNewsletterSubmitting(true);
+    setNewsletterStatus({ type: null, message: '' });
+
+    try {
+      const result = await EmailService.processNewsletterSignup({
+        email: newsletterEmail,
+        source: 'footer',
+      });
+      setNewsletterStatus({
+        type: result.success ? 'success' : 'error',
+        message: result.message,
+      });
+      if (result.success) {
+        setNewsletterEmail('');
+      }
+    } catch {
+      setNewsletterStatus({
+        type: 'error',
+        message:
+          'Could not complete signup. Please try again or email support@brijtech.org',
+      });
+    } finally {
+      setNewsletterSubmitting(false);
+    }
   };
 
   return (
@@ -99,19 +128,23 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:brijtech2025@gmail.com" className="hover:text-primary transition-colors">
-                  brijtech2025@gmail.com
+                <a href="mailto:support@brijtech.org" className="hover:text-primary transition-colors">
+                  support@brijtech.org
                 </a>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
                 <a href="tel:+15551234567" className="hover:text-primary transition-colors">
-                  +1 (555) 123-4567
+                  +91 9782174123
                 </a>
               </div>
-              <div className="flex items-center space-x-3 text-sm text-muted-foreground">
-                <MapPin className="w-4 h-4 text-primary" />
-                <span>San Francisco, CA</span>
+              <div className="flex items-start space-x-3 text-sm text-muted-foreground">
+                <MapPin className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                <span className="leading-relaxed">
+                  San Francisco, CA
+                  <br />
+                  Bangalore, India
+                </span>
               </div>
             </div>
           </div>
@@ -197,21 +230,41 @@ const Footer: React.FC = () => {
                 Get the latest trends, insights, and updates on cutting-edge technology.
               </p>
             </div>
-            <form onSubmit={handleNewsletterSubmit} className="flex space-x-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                required
-                className="flex-1 px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
-              />
-              <motion.button
-                type="submit"
-                className="brand-gradient-primary text-white px-6 py-3 rounded-2xl font-medium hover:shadow-lg transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Subscribe
-              </motion.button>
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3">
+              <div className="flex flex-col sm:flex-row gap-3 sm:space-x-3 sm:space-y-0">
+                <input
+                  type="email"
+                  name="newsletter-email"
+                  autoComplete="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  disabled={newsletterSubmitting}
+                  className="flex-1 px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 disabled:opacity-60"
+                />
+                <motion.button
+                  type="submit"
+                  disabled={newsletterSubmitting}
+                  className="brand-gradient-primary text-white px-6 py-3 rounded-2xl font-medium hover:shadow-lg transition-all duration-300 disabled:opacity-60 shrink-0"
+                  whileHover={newsletterSubmitting ? undefined : { scale: 1.05 }}
+                  whileTap={newsletterSubmitting ? undefined : { scale: 0.95 }}
+                >
+                  {newsletterSubmitting ? 'Subscribing…' : 'Subscribe'}
+                </motion.button>
+              </div>
+              {newsletterStatus.type && (
+                <p
+                  className={`text-sm ${
+                    newsletterStatus.type === 'success'
+                      ? 'text-green-600 dark:text-green-400'
+                      : 'text-destructive'
+                  }`}
+                  role="status"
+                >
+                  {newsletterStatus.message}
+                </p>
+              )}
             </form>
           </div>
         </div>

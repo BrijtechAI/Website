@@ -50,7 +50,7 @@ const Contact: React.FC = () => {
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'There was an error processing your request. Please try again or contact us directly at brijtech2025@gmail.com'
+        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.org'
       });
     } finally {
       setIsSubmitting(false);
@@ -68,22 +68,22 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      value: 'brijtech2025@gmail.com',
+      value: 'support@brijtech.org',
       description: 'Send us an email anytime',
-      link: 'mailto:brijtech2025@gmail.com'
+      link: 'mailto:support@brijtech.org'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      value: '+1 (555) 123-4567',
+      value: '+91 9782174123',
       description: '24/7 support available',
       link: 'tel:+15551234567'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      value: 'San Francisco, CA',
-      description: 'Silicon Valley headquarters',
+      value: 'San Francisco, CA\nBangalore, India',
+      description: 'Silicon Valley & India headquarters',
       link: '#'
     },
     {
@@ -197,7 +197,7 @@ const Contact: React.FC = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="+91 9782174123"
                       />
                     </div>
                   </div>
@@ -354,7 +354,7 @@ const Contact: React.FC = () => {
                           </h4>
                           <a 
                             href={info.link}
-                            className="text-primary font-medium mb-1 hover:text-secondary transition-colors block"
+                            className="text-primary font-medium mb-1 hover:text-secondary transition-colors block whitespace-pre-line"
                           >
                             {info.value}
                           </a>

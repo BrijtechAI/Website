@@ -1,8 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, User, ArrowRight, Clock, Tag } from 'lucide-react';
+import EmailService from '../services/emailService';
 
 const Blog: React.FC = () => {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+  const [newsletterStatus, setNewsletterStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setNewsletterSubmitting(true);
+    setNewsletterStatus({ type: null, message: '' });
+
+    try {
+      const result = await EmailService.processNewsletterSignup({
+        email: newsletterEmail,
+        source: 'blog',
+      });
+      setNewsletterStatus({
+        type: result.success ? 'success' : 'error',
+        message: result.message,
+      });
+      if (result.success) {
+        setNewsletterEmail('');
+      }
+    } catch {
+      setNewsletterStatus({
+        type: 'error',
+        message:
+          'Could not complete signup. Please try again or email support@brijtech.org',
+      });
+    } finally {
+      setNewsletterSubmitting(false);
+    }
+  };
+
   const blogPosts = [
     {
       id: 1,
@@ -231,21 +267,44 @@ const Blog: React.FC = () => {
               Subscribe to our newsletter and get the latest articles, tutorials, 
               and industry insights delivered directly to your inbox.
             </p>
-            <form className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                required
-                className="flex-1 px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300"
-              />
-              <motion.button
-                type="submit"
-                className="brand-gradient-primary text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Subscribe
-              </motion.button>
+            <form
+              onSubmit={handleNewsletterSubmit}
+              className="flex flex-col gap-3 justify-center max-w-md mx-auto"
+            >
+              <div className="flex flex-col sm:flex-row gap-4">
+                <input
+                  type="email"
+                  name="newsletter-email"
+                  autoComplete="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  disabled={newsletterSubmitting}
+                  className="flex-1 px-4 py-3 glass rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all duration-300 disabled:opacity-60"
+                />
+                <motion.button
+                  type="submit"
+                  disabled={newsletterSubmitting}
+                  className="brand-gradient-primary text-white px-6 py-3 rounded-2xl font-semibold hover:shadow-lg transition-all duration-300 disabled:opacity-60 shrink-0"
+                  whileHover={newsletterSubmitting ? undefined : { scale: 1.05 }}
+                  whileTap={newsletterSubmitting ? undefined : { scale: 0.95 }}
+                >
+                  {newsletterSubmitting ? 'Subscribing…' : 'Subscribe'}
+                </motion.button>
+              </div>
+              {newsletterStatus.type && (
+                <p
+                  className={`text-sm text-left sm:text-center ${
+                    newsletterStatus.type === 'success'
+                      ? 'text-green-600 dark:text-green-400'
+                      : 'text-destructive'
+                  }`}
+                  role="status"
+                >
+                  {newsletterStatus.message}
+                </p>
+              )}
             </form>
           </motion.div>
         </div>
