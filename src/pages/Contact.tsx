@@ -77,7 +77,7 @@ const Contact: React.FC = () => {
       title: 'Call Us',
       value: '+91 9782174123',
       description: '24/7 support available',
-      link: 'tel:+15551234567'
+      link: 'tel:+919782174123'
     },
     {
       icon: MapPin,
