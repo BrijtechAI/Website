@@ -16,15 +16,12 @@ import TermsOfService from './pages/TermsOfService';
 import CookiePolicy from './pages/CookiePolicy';
 import Security from './pages/Security';
 import './styles/globals.css';
-
-/** GitHub Pages serves the app under `/Website/`; `basename` must match `vite.config` `base` (no trailing slash). */
-const routerBasename =
-  import.meta.env.BASE_URL.replace(/\/$/, '') || undefined;
+import { getRouterBasename } from './utils/routerBasename';
 
 function App() {
   return (
     <ThemeProvider>
-      <Router basename={routerBasename}>
+      <Router basename={getRouterBasename()}>
         <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
           <Header />
           <main className="pt-20">
