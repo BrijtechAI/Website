@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
       setNewsletterStatus({
         type: 'error',
         message:
-          'Could not complete signup. Please try again or email support@brijtech.org',
+          'Could not complete signup. Please try again or email support@brijtech.in',
       });
     } finally {
       setNewsletterSubmitting(false);
@@ -129,8 +129,8 @@ const Footer: React.FC = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:support@brijtech.org" className="hover:text-primary transition-colors">
-                  support@brijtech.org
+                <a href="mailto:support@brijtech.in" className="hover:text-primary transition-colors">
+                  support@brijtech.in
                 </a>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">

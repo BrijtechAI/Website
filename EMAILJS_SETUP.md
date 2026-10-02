@@ -16,22 +16,22 @@ This guide will help you set up EmailJS to enable email functionality for your c
 4. Follow the setup instructions for your email provider
 5. Note down your **Service ID**
 
-### Why mail shows `brijtech2025@gmail.com` instead of `support@brijtech.org`
+### Why mail shows `brijtech2025@gmail.com` instead of `support@brijtech.in`
 
 EmailJS sends **through whichever account you connected** under **Email Services**. A **Gmail** service sends as that Gmail address. Changing the text in your website code does **not** change the SMTP “From” address.
 
-To have messages **come from** `support@brijtech.org`:
+To have messages **come from** `support@brijtech.in`:
 
-1. **Google Workspace (recommended if `@brijtech.org` is on Google)**  
-   Add an **Email Service** in EmailJS using the **Google** (or Gmail) flow with the **Workspace user** `support@brijtech.org` (or an admin account that is allowed to send as that address). Point both templates at this service if you replace the old one.
+1. **Google Workspace (recommended if `@brijtech.in` is on Google)**  
+   Add an **Email Service** in EmailJS using the **Google** (or Gmail) flow with the **Workspace user** `support@brijtech.in` (or an admin account that is allowed to send as that address). Point both templates at this service if you replace the old one.
 
 2. **Custom SMTP (most hosts: cPanel, Plesk, Zoho, Microsoft 365, etc.)**  
-   In EmailJS → **Email Services** → **Add New Service** → **Custom SMTP**. Enter the SMTP host, port, TLS, and credentials your provider gives for `support@brijtech.org`. Then edit each template and set **Service** to this new SMTP service. The **From** field in the template can usually be `support@brijtech.org` once SMTP authorises it.
+   In EmailJS → **Email Services** → **Add New Service** → **Custom SMTP**. Enter the SMTP host, port, TLS, and credentials your provider gives for `support@brijtech.in`. Then edit each template and set **Service** to this new SMTP service. The **From** field in the template can usually be `support@brijtech.in` once SMTP authorises it.
 
 3. **Gmail + “Send mail as” (limited)**  
-   In Gmail settings you can add `support@brijtech.org` as a “Send mail as” address (after DNS verification). EmailJS’s Gmail integration may **still** send as the primary Gmail address; if so, use **Custom SMTP** or **Workspace** instead.
+   In Gmail settings you can add `support@brijtech.in` as a “Send mail as” address (after DNS verification). EmailJS’s Gmail integration may **still** send as the primary Gmail address; if so, use **Custom SMTP** or **Workspace** instead.
 
-**Receiving** internal form mail **at** `support@brijtech.org`: the app already passes `to_email` as `support@brijtech.org`. In the **Brijtech- Template**, set **To Email** to `{{to_email}}` (not a fixed Gmail address).
+**Receiving** internal form mail **at** `support@brijtech.in`: the app already passes `to_email` as `support@brijtech.in`. In the **Brijtech- Template**, set **To Email** to `{{to_email}}` (not a fixed Gmail address).
 
 **Visitors’ confirmation emails** should also use a service that you are happy shows as the brand (often the same SMTP or Workspace service as above).
 
@@ -50,7 +50,7 @@ The app sends **one internal template** (to your team) and **one confirmation te
 - **User confirmation** `submission_kind` from the app: `Project request`, `Contact message`, or `Newsletter`.
 - For contact or newsletter, `phone`, `budget`, and `timeline` are sent as `—` so one layout still works.
 
-**Logo:** Templates use `https://www.brijtech.org/logo.png`. Ensure that URL serves your mark (same file as `public/logo.png` on the site). Header uses a **34px-tall** image beside the wordmark; footer uses **48×48**. `filter: drop-shadow` is omitted for better Outlook/Gmail compatibility.
+**Logo:** Templates use `https://www.brijtech.in/logo.png`. Ensure that URL serves your mark (same file as `public/logo.png` on the site). Header uses a **34px-tall** image beside the wordmark; footer uses **48×48**. `filter: drop-shadow` is omitted for better Outlook/Gmail compatibility.
 
 **Final HTML (source of truth):** Each file is a **single root `<table>`** (the 720px card — no outer gray wrapper). Copy the whole file into the EmailJS HTML body, or paste only the `<table>…</table>` and omit the optional `<!-- ... -->` comment at the top.
 
@@ -64,7 +64,7 @@ The app sends **one internal template** (to your team) and **one confirmation te
 ### Template A — Company / internal notification
 
 1. **Email Templates** → **Create New Template** (or edit existing).
-2. Set **To Email** to your team address (e.g. `support@brijtech.org`) if your service reads “to” from the template.
+2. Set **To Email** to your team address (e.g. `support@brijtech.in`) if your service reads “to” from the template.
 3. **Subject:** `[{{submission_kind}}] {{from_name}} — {{company}}`
 4. **Content:** Open `email-previews/emailjs-template-a-company-internal.html`, select all, paste into the HTML body. Remove the `<!-- ... -->` comment at the top if you prefer.
 

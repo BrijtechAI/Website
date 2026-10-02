@@ -20,7 +20,7 @@ interface CalendlyBookingProps {
 const CalendlyBooking: React.FC<CalendlyBookingProps> = ({ 
   isOpen, 
   onClose, 
-  calendlyUrl = 'https://calendly.com/brijtech2025/30min' // Set notification/reminder email to support@brijtech.org in Calendly account settings
+  calendlyUrl = 'https://calendly.com/brijtech2025/30min' // Set notification/reminder email to support@brijtech.in in Calendly account settings
 }) => {
   useEffect(() => {
     if (isOpen && window.Calendly) {

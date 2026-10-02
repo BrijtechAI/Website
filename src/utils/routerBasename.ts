@@ -1,8 +1,8 @@
-const ROOT_HOSTS = new Set(['brijtech.org', 'www.brijtech.org']);
+const ROOT_HOSTS = new Set(['brijtech.in', 'www.brijtech.in']);
 
 /**
  * GitHub Pages project URL: `…/github.io/Website/…` → basename `/Website`.
- * Custom domain (brijtech.org): site files are at domain root (`/assets/…`), never use `/Website` basename.
+ * Custom domain (brijtech.in): site files are at domain root (`/assets/…`), never use `/Website` basename.
  * Production asset URLs use Vite `base: './'` so `./assets/…` resolves correctly on both hosts.
  */
 export function getRouterBasename(): string | undefined {

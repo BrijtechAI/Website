@@ -135,7 +135,7 @@ const PrivacyPolicy: React.FC = () => {
                   <li>Objection: Object to processing of your information</li>
                   <li>Restriction: Request restriction of processing</li>
                 </ul>
-                <p>To exercise these rights, please contact us at support@brijtech.org.</p>
+                <p>To exercise these rights, please contact us at support@brijtech.in.</p>
               </div>
             </motion.div>
 
@@ -176,7 +176,7 @@ const PrivacyPolicy: React.FC = () => {
                   If you have any questions about this Privacy Policy or our data practices, please contact us:
                 </p>
                 <div className="space-y-2">
-                  <p><strong>Email:</strong> support@brijtech.org</p>
+                  <p><strong>Email:</strong> support@brijtech.in</p>
                   <p><strong>Phone:</strong> +91 9782174123</p>
                   <p><strong>Address:</strong> San Francisco, CA; Bangalore, India</p>
                 </div>

@@ -44,7 +44,7 @@ const Contact: React.FC = () => {
     } catch (error) {
       setSubmitStatus({
         type: 'error',
-        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.org'
+        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.in'
       });
     } finally {
       setIsSubmitting(false);
@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
     {
       icon: Mail,
       title: 'Email Us',
-      value: 'support@brijtech.org',
+      value: 'support@brijtech.in',
       description: 'Send us an email anytime'
     },
     {

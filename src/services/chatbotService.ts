@@ -117,7 +117,7 @@ COMPANY INFORMATION:
 - Name: BrijTech
 - Vision: "Bridging Technology Gaps with AI Solutions"
 - Services: Custom Software Development, Web & Mobile Apps, Cloud & DevOps, AI/ML Solutions, UI/UX Design
-- Contact: support@brijtech.org, +91 9782174123
+- Contact: support@brijtech.in, +91 9782174123
 - Location: San Francisco, CA; Bangalore, India
 - Stats: 500+ AI Solutions Delivered, 98% Client Satisfaction, 50+ Businesses Transformed
 
@@ -140,12 +140,12 @@ STRICT BOUNDARIES:
 RESPONSE POLICY:
 - Default to a structured, professional response that briefly acknowledges their goal and asks for the minimum necessary details in one compact prompt.
 - Preferred fields to collect (in order): Name, Email, Company (optional), Project Type (Web/Mobile/AI/Cloud/Custom), Brief Requirement (2–3 lines), Timeline/Budget (optional).
-- End every message with a clear call‑to‑action: either “Share your details here” or “Contact us at support@brijtech.org or via the form.”
+- End every message with a clear call‑to‑action: either “Share your details here” or “Contact us at support@brijtech.in or via the form.”
 - Keep responses to 1–3 short sentences or a compact bullet list.
 
 EXAMPLES OF GOOD RESPONSES:
-- "We can help with your clothing brand website with design, development, and scalable infrastructure. Please share: Name, Email, Project Type, and a 2–3 line brief. You can also reach us at support@brijtech.org or submit the form to get started."
-- "BrijTech delivers custom Web, Mobile, AI/ML, and Cloud solutions with enterprise‑grade quality. Share your Name, Email, Project Type, and a short brief to proceed, or contact us at support@brijtech.org."
+- "We can help with your clothing brand website with design, development, and scalable infrastructure. Please share: Name, Email, Project Type, and a 2–3 line brief. You can also reach us at support@brijtech.in or submit the form to get started."
+- "BrijTech delivers custom Web, Mobile, AI/ML, and Cloud solutions with enterprise‑grade quality. Share your Name, Email, Project Type, and a short brief to proceed, or contact us at support@brijtech.in."
 
 Remember: Keep it professional and succinct. Collect details, then direct the user to email/form for next steps.`;
 
@@ -233,38 +233,38 @@ Remember: Keep it professional and succinct. Collect details, then direct the us
     
     // Project-related responses
     if (message.includes('website') || message.includes('web')) {
-      return "We can build your website end‑to‑end (design, development, scalable hosting). Please share: Name, Email, Project Type, and a 2–3 line brief. You can also contact us at support@brijtech.org to proceed.";
+      return "We can build your website end‑to‑end (design, development, scalable hosting). Please share: Name, Email, Project Type, and a 2–3 line brief. You can also contact us at support@brijtech.in to proceed.";
     }
     
     if (message.includes('app') || message.includes('mobile')) {
-      return "We deliver iOS/Android apps with secure, scalable backends. Share your Name, Email, Project Type, and a short brief, or email support@brijtech.org to start.";
+      return "We deliver iOS/Android apps with secure, scalable backends. Share your Name, Email, Project Type, and a short brief, or email support@brijtech.in to start.";
     }
     
     if (message.includes('software') || message.includes('development')) {
-      return "We build custom software aligned to your goals (web, mobile, AI/ML, cloud). Provide: Name, Email, Project Type, brief requirement (2–3 lines). Or contact support@brijtech.org.";
+      return "We build custom software aligned to your goals (web, mobile, AI/ML, cloud). Provide: Name, Email, Project Type, brief requirement (2–3 lines). Or contact support@brijtech.in.";
     }
     
     // Service inquiries
     if (message.includes('service') || message.includes('what do you do') || message.includes('company')) {
-      return "BrijTech delivers Web, Mobile, AI/ML, Cloud/DevOps, and UI/UX solutions. Share your Name, Email, Project Type, and a short brief, or contact us at support@brijtech.org to proceed.";
+      return "BrijTech delivers Web, Mobile, AI/ML, Cloud/DevOps, and UI/UX solutions. Share your Name, Email, Project Type, and a short brief, or contact us at support@brijtech.in to proceed.";
     }
     
     // Pricing inquiries
     if (message.includes('price') || message.includes('cost') || message.includes('budget')) {
-      return "Pricing depends on scope and complexity. Share your Name, Email, Project Type, and a brief requirement for a tailored estimate, or email support@brijtech.org to schedule a consultation.";
+      return "Pricing depends on scope and complexity. Share your Name, Email, Project Type, and a brief requirement for a tailored estimate, or email support@brijtech.in to schedule a consultation.";
     }
     
     // Contact requests
     if (message.includes('contact') || message.includes('call') || message.includes('email')) {
-      return "You can reach us at support@brijtech.org or submit the form. If you'd like, share your Name, Email, Project Type, and a short brief here and we’ll follow up.";
+      return "You can reach us at support@brijtech.in or submit the form. If you'd like, share your Name, Email, Project Type, and a short brief here and we’ll follow up.";
     }
     
     // Default responses
     if (message.includes('hi') || message.includes('hello') || message.includes('hey')) {
-      return "Welcome to BrijTech. To assist you, please share: Name, Email, Project Type (Web/Mobile/AI/Cloud/Custom), and a 2–3 line brief. You can also contact us at support@brijtech.org.";
+      return "Welcome to BrijTech. To assist you, please share: Name, Email, Project Type (Web/Mobile/AI/Cloud/Custom), and a 2–3 line brief. You can also contact us at support@brijtech.in.";
     }
     
-    return "Happy to assist. Please share: Name, Email, Project Type, and a short brief. Or contact support@brijtech.org to proceed.";
+    return "Happy to assist. Please share: Name, Email, Project Type, and a short brief. Or contact support@brijtech.in to proceed.";
   }
 
   static extractUserInfo(message: string, currentInfo: Partial<UserInfo>): Partial<UserInfo> {
@@ -308,7 +308,7 @@ Remember: Keep it professional and succinct. Collect details, then direct the us
       ],
       info_collection: [
         { text: "My name is John", icon: "👤", action: "name" },
-        { text: "support@brijtech.org", icon: "📧", action: "email" },
+        { text: "support@brijtech.in", icon: "📧", action: "email" },
         { text: "I work at TechCorp", icon: "🏢", action: "company" },
         { text: "Skip to project details", icon: "⏭️", action: "skip" }
       ],

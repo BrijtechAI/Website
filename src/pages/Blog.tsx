@@ -32,7 +32,7 @@ const Blog: React.FC = () => {
       setNewsletterStatus({
         type: 'error',
         message:
-          'Could not complete signup. Please try again or email support@brijtech.org',
+          'Could not complete signup. Please try again or email support@brijtech.in',
       });
     } finally {
       setNewsletterSubmitting(false);

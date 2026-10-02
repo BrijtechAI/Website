@@ -59,7 +59,7 @@ class EmailService {
     const now = new Date();
     const isProject = args.kind === 'project';
     return {
-      to_email: 'support@brijtech.org',
+      to_email: 'support@brijtech.in',
       submission_kind,
       from_name: args.from_name,
       from_email: args.from_email,
@@ -95,7 +95,7 @@ class EmailService {
         ...common,
         submission_kind: 'Project request',
         user_intro:
-          'Your project enquiry is in hand, and we are grateful that you considered BrijTech. Our team will review your requirements with care and respond within the timeframe shown in the summary that follows. Should something require immediate attention, you may write to us at support@brijtech.org.',
+          'Your project enquiry is in hand, and we are grateful that you considered BrijTech. Our team will review your requirements with care and respond within the timeframe shown in the summary that follows. Should something require immediate attention, you may write to us at support@brijtech.in.',
         response_time: 'Within 12 hours',
       };
     }
@@ -104,7 +104,7 @@ class EmailService {
         ...common,
         submission_kind: 'Contact message',
         user_intro:
-          'We have received your message securely and appreciate your taking the time to reach out. A colleague will review your note and aim to respond within the period indicated below. If your matter is urgent, please contact us at support@brijtech.org.',
+          'We have received your message securely and appreciate your taking the time to reach out. A colleague will review your note and aim to respond within the period indicated below. If your matter is urgent, please contact us at support@brijtech.in.',
         response_time: 'Within 24 hours',
       };
     }
@@ -112,7 +112,7 @@ class EmailService {
       ...common,
       submission_kind: 'Newsletter',
       user_intro:
-        'Thank you for joining BrijTech’s mailing list. We issue updates only when we believe they merit your attention, in line with the cadence noted below. For any other enquiry, we remain available at support@brijtech.org.',
+        'Thank you for joining BrijTech’s mailing list. We issue updates only when we believe they merit your attention, in line with the cadence noted below. For any other enquiry, we remain available at support@brijtech.in.',
       response_time: 'When we have news (low volume)',
     };
   }
@@ -309,14 +309,14 @@ class EmailService {
       return {
         success: false,
         message:
-          'Could not complete signup. Please try again or email support@brijtech.org',
+          'Could not complete signup. Please try again or email support@brijtech.in',
       };
     } catch (error) {
       console.error('Error processing newsletter signup:', error);
       return {
         success: false,
         message:
-          'Could not complete signup. Please try again or email support@brijtech.org',
+          'Could not complete signup. Please try again or email support@brijtech.in',
       };
     }
   }
@@ -348,14 +348,14 @@ class EmailService {
       } else {
         return {
           success: false,
-          message: 'There was an error sending your request. Please try again or contact us directly at support@brijtech.org'
+          message: 'There was an error sending your request. Please try again or contact us directly at support@brijtech.in'
         };
       }
     } catch (error) {
       console.error('Error processing project form:', error);
       return {
         success: false,
-        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.org'
+        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.in'
       };
     }
   }
@@ -387,14 +387,14 @@ class EmailService {
       } else {
         return {
           success: false,
-          message: 'There was an error sending your message. Please try again or contact us directly at support@brijtech.org'
+          message: 'There was an error sending your message. Please try again or contact us directly at support@brijtech.in'
         };
       }
     } catch (error) {
       console.error('Error processing contact form:', error);
       return {
         success: false,
-        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.org'
+        message: 'There was an error processing your request. Please try again or contact us directly at support@brijtech.in'
       };
     }
   }

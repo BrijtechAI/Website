@@ -200,7 +200,7 @@ const TermsOfService: React.FC = () => {
                   For questions about these Terms of Service, please contact us:
                 </p>
                 <div className="space-y-2">
-                  <p><strong>Email:</strong> support@brijtech.org</p>
+                  <p><strong>Email:</strong> support@brijtech.in</p>
                   <p><strong>Phone:</strong> +91 9782174123</p>
                   <p><strong>Address:</strong> San Francisco, CA; Bangalore, India</p>
                 </div>
